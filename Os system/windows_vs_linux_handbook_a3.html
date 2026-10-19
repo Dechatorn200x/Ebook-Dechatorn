@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="th" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows CMD vs Linux Terminal Handbook (9 Chapters + Network & Data Recovery)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#090d16',
+                        cardbg: '#111827',
+                        accentwin: '#0284c7',
+                        accentlinux: '#10b981',
+                        gemini: '#8b5cf6',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Prompt:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Prompt', sans-serif; }
+        code, pre { font-family: 'Fira Code', monospace; }
+        @media print {
+            body { background: white !important; color: black !important; }
+            .no-print { display: none !important; }
+            .a3-sheet { box-shadow: none !important; border: none !important; width: 100% !important; margin: 0 !important; padding: 10mm !important; }
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen p-4 md:p-8 flex flex-col items-center">
+
+    <div class="no-print w-full max-w-[1600px] flex justify-between items-center mb-6 bg-slate-900 border border-slate-800 p-4 rounded-xl shadow-xl flex-wrap gap-4">
+        <div class="flex items-center gap-3">
+            <div class="bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 p-2.5 rounded-lg text-white font-bold shadow-lg shadow-purple-500/20">
+                <i class="fa-solid fa-terminal text-xl"></i>
+            </div>
+            <div>
+                <h1 class="text-xl font-bold tracking-tight text-white">คู่มือเปรียบเทียบคำสั่ง Windows CMD & Linux Terminal</h1>
+                <p class="text-xs text-slate-400">A3 Presentation Layout • ครบถ้วน 9 หมวดคำสั่งสำคัญ + เน็ตเวิร์ก & กู้ข้อมูล</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-3 flex-wrap">
+            <button onclick="openAiModal()" class="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition flex items-center gap-2 shadow-md shadow-purple-600/20">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> ถาม Gemini AI แปลงคำสั่ง
+            </button>
+            <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition flex items-center gap-2 shadow-md">
+                <i class="fa-solid fa-print"></i> พิมพ์ / บันทึก PDF (A3)
+            </button>
+            <button onclick="toggleTheme()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-2 rounded-lg text-sm transition">
+                <i class="fa-solid fa-circle-half-stroke"></i>
+            </button>
+        </div>
+    </div>
+
+    <main class="a3-sheet w-full max-w-[1600px] bg-slate-900 border border-slate-800 rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+        
+        <div class="border-b border-slate-800 pb-8 mb-8 flex flex-col xl:flex-row justify-between items-start xl:items-end gap-6">
+            <div>
+                <span class="bg-purple-500/10 text-purple-400 text-xs font-semibold px-3 py-1 rounded-full border border-purple-500/20 uppercase tracking-widest shadow-sm">Master Edition with 9 Chapters & Network Diagnostics</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mt-3 text-white">Windows CMD <span class="text-slate-500 font-light">vs</span> Linux Terminal</h2>
+                <p class="text-slate-400 mt-2 text-sm md:text-base max-w-3xl">คู่มืออ้างอิงคำสั่งระบบปฏิบัติการเทียบเคียง (Side-by-Side) ระหว่าง Windows และ Linux ครอบคลุมระบบไฟล์ เครือข่ายเชิงลึก และเทคนิคกู้ข้อมูลฮาร์ดดิสก์</p>
+            </div>
+            <div class="flex gap-3 text-sm font-semibold flex-wrap">
+                <div class="bg-sky-500/10 border border-sky-500/30 text-sky-400 px-4 py-2 rounded-xl flex items-center gap-2 shadow-sm">
+                    <i class="fa-brands fa-windows"></i> Windows (CMD/PowerShell)
+                </div>
+                <div class="bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 px-4 py-2 rounded-xl flex items-center gap-2 shadow-sm">
+                    <i class="fa-brands fa-linux"></i> Linux (Ubuntu / Bash)
+                </div>
+                <div class="bg-purple-500/10 border border-purple-500/30 text-purple-400 px-4 py-2 rounded-xl flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-brain"></i> Gemini API
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            <div class="relative group overflow-hidden bg-gradient-to-br from-slate-900 via-slate-900 to-sky-950/40 border border-sky-500/20 rounded-2xl p-4 shadow-xl">
+                <div class="flex items-center gap-3 mb-2">
+                    <div class="w-9 h-9 rounded-xl bg-sky-500/20 text-sky-400 flex items-center justify-center text-base shadow-inner">
+                        <i class="fa-solid fa-server"></i>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-semibold text-sky-400 uppercase tracking-wider">Chapters 01 - 05</span>
+                        <h4 class="text-xs font-bold text-white">ระบบไฟล์และการนำทาง</h4>
+                    </div>
+                </div>
+                <p class="text-[11px] text-slate-400 leading-relaxed">คำสั่งจัดการโฟลเดอร์ คัดลอก ย้าย และสืบค้นไฟล์เอกสาร</p>
+            </div>
+
+            <div class="relative group overflow-hidden bg-gradient-to-br from-slate-900 via-slate-900 to-emerald-950/40 border border-emerald-500/20 rounded-2xl p-4 shadow-xl">
+                <div class="flex items-center gap-3 mb-2">
+                    <div class="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-base shadow-inner">
+                        <i class="fa-solid fa-network-wired"></i>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-semibold text-emerald-400 uppercase tracking-wider">Chapters 06 - 07</span>
+                        <h4 class="text-xs font-bold text-white">สิทธิ์ระบบและเน็ตเวิร์กเบื้องต้น</h4>
+                    </div>
+                </div>
+                <p class="text-[11px] text-slate-400 leading-relaxed">การควบคุมสิทธิ์ Chmod และวินิจฉัยพอร์ตระบบเครือข่าย</p>
+            </div>
+
+            <div class="relative group overflow-hidden bg-gradient-to-br from-slate-900 via-slate-900 to-purple-950/40 border border-purple-500/20 rounded-2xl p-4 shadow-xl">
+                <div class="flex items-center gap-3 mb-2">
+                    <div class="w-9 h-9 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-base shadow-inner">
+                        <i class="fa-solid fa-hard-drive"></i>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-semibold text-purple-400 uppercase tracking-wider">Chapters 08 - 09 & AI</span>
+                        <h4 class="text-xs font-bold text-white">เน็ตเวิร์กเชิงลึก & กู้ข้อมูล</h4>
+                    </div>
+                </div>
+                <p class="text-[11px] text-slate-400 leading-relaxed">วินิจฉัยเครือข่ายขั้นสูง, Flush DNS, และ Mount ฮาร์ดดิสก์กู้ไฟล์</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-8">
+            <!-- Chapter 1 -->
+            <section class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-6 shadow-inner flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 01</span>
+                            <h3 class="text-base font-bold text-slate-200">การนำทางและจัดการไดเรกทอรี (Directory & Navigation)</h3>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-400 mb-4">คำสั่งพื้นฐานสำหรับการตรวจสอบตำแหน่งปัจจุบันและการย้ายโฟลเดอร์ภายในระบบไฟล์</p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm border-collapse">
+                            <thead>
+                                <tr class="border-b border-slate-800 text-slate-400 text-xs uppercase tracking-wider">
+                                    <th class="py-2 px-3">การทำงาน</th>
+                                    <th class="py-2 px-3 text-sky-400">Windows (CMD)</th>
+                                    <th class="py-2 px-3 text-emerald-400">Linux (Bash)</th>
+                                    <th class="py-2 px-3">คำอธิบาย</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800/50 text-slate-300 text-xs">
+                                <tr>
+                                    <td class="py-2.5 px-3 font-medium">ดูที่อยู่ปัจจุบัน</td>
+                                    <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">cd</code></td>
+                                    <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">pwd</code></td>
+                                    <td class="py-2.5 px-3 text-slate-400">แสดง path ปัจจุบันแบบสัมบูรณ์</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-3 font-medium">แสดงไฟล์ในโฟลเดอร์</td>
+                                    <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">dir</code></td>
+                                    <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">ls</code></td>
+                                    <td class="py-2.5 px-3 text-slate-400">แสดงรายชื่อไฟล์และโฟลเดอร์</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-3 font-medium">แสดงแบบละเอียด</td>
+                                    <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">dir</code></td>
+                                    <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">ls <span class="text-amber-300">-l</span></code></td>
+                                    <td class="py-2.5 px-3 text-slate-400">แสดงสิทธิ์ ขนาด และเวลาแก้ไข</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-3 font-medium">แสดงไฟล์ที่ซ่อนอยู่</td>
+                                    <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">dir <span class="text-amber-300">/a</span></code></td>
+                                    <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">ls <span class="text-amber-300">-a</span></code></td>
+                                    <td class="py-2.5 px-3 text-slate-400">รวมไฟล์ซ่อน (dotfiles)</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-3 font-medium">เปลี่ยนโฟลเดอร์</td>
+                                    <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">cd</code> <span class="text-slate-400">path</span></td>
+                                    <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">cd</code> <span class="text-slate-400">path</span></td>
+                                    <td class="py-2.5 px-3 text-slate-400">ย้ายเข้าไปยังโฟลเดอร์เป้าหมาย</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-3 font-medium">ถอยกลับ / ไป root</td>
+                                    <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">cd ..</code> <span class="text-slate-500">|</span> <code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">cd \</code></td>
+                                    <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">cd ..</code> <span class="text-slate-500">|</span> <code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">cd /</code></td>
+                                    <td class="py-2.5 px-3 text-slate-400">กลับโฟลเดอร์แม่ หรือไป root ไดรฟ์</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chapter 2 -->
+            <section class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-6 shadow-inner flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 02</span>
+                            <h3 class="text-base font-bold text-slate-200">การจัดการไฟล์และโฟลเดอร์ (File & Folder Management)</h3>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-400 mb-4">การสร้าง คัดลอก ย้าย และลบไฟล์หรือโฟลเดอร์อย่างปลอดภัย</p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm border-collapse">
+                            <thead>
+                                <tr class="border-b border-slate-800 text-slate-400 text-xs uppercase tracking-wider">
+                                    <th class="py-2 px-3">การทำงาน</th>
+                                    <th class="py-2 px-3 text-sky-400">Windows (CMD)</th>
+                                    <th class="py-2 px-3 text-emerald-400">Linux (Bash)</th>
+                                    <th class="py-2 px-3">คำอธิบาย</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800/50 text-slate-300 text-xs">
+                                <tr>
+                                    <td class="py-2.5 px-3 font-medium">สร้างโฟลเดอร์ใหม่</td>
+                                    <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">mkdir</code> <span class="text-slate-400">dir</span></td>
+                                    <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">mkdir</code> <span class="text-slate-400">dir</span></td>
+                                    <td class="py-2.5 px-3 text-slate-400">สร้างโฟลเดอร์ใหม่</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-3 font-medium">สร้างไฟล์เปล่า</td>
+                                    <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">type nul ></code> <span class="text-slate-400">f.txt</span></td>
+                                    <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">touch</code> <span class="text-slate-400">f.txt</span></td>
+                                    <td class="py-2.5 px-3 text-slate-400">สร้างไฟล์เปล่าหรืออัปเดตเวลา</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-3 font-medium">คัดลอกไฟล์</td>
+                                    <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">copy</code> <span class="text-slate-400">src dst</span></td>
+                                    <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">cp</code> <span class="text-slate-400">src dst</span></td>
+                                    <td class="py-2.5 px-3 text-slate-400">คัดลอกไฟล์ต้นทางไปปลายทาง</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-3 font-medium">ย้าย / เปลี่ยนชื่อ</td>
+                                    <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">move</code> <span class="text-slate-400">o.txt n.txt</span></td>
+                                    <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">mv</code> <span class="text-slate-400">o.txt n.txt</span></td>
+                                    <td class="py-2.5 px-3 text-slate-400">ย้ายหรือเปลี่ยนชื่อไฟล์</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-3 font-medium">ลบไฟล์</td>
+                                    <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">del</code> <span class="text-slate-400">file.txt</span></td>
+                                    <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">rm</code> <span class="text-slate-400">file.txt</span></td>
+                                    <td class="py-2.5 px-3 text-slate-400">ลบไฟล์ออกจากระบบ</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-3 font-medium">ลบโฟลเดอร์ทั้งหมด</td>
+                                    <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">rmdir <span class="text-amber-300">/s /q</span></code> <span class="text-slate-400">folder</span></td>
+                                    <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">rm <span class="text-amber-300">-rf</span></code> <span class="text-slate-400">folder</span></td>
+                                    <td class="py-2.5 px-3 text-slate-400">ลบโฟลเดอร์และไฟล์ภายในแบบ recursive</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-8">
+            <!-- Chapter 3 -->
+            <section class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-6 shadow-inner flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 03</span>
+                            <h3 class="text-base font-bold text-slate-200">การดูเนื้อหาและค้นหาภายในไฟล์ (Viewing & Searching)</h3>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-400 mb-4">ตรวจสอบข้อมูลในไฟล์ข้อความ อ่าน log และค้นหาคีย์เวิร์ดด้วย grep/findstr</p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm border-collapse">
+                            <thead>
+                                <tr class="border-b border-slate-800 text-slate-400 text-xs uppercase tracking-wider">
+                                    <th class="py-2 px-3">การทำงาน</th>
+                                    <th class="py-2 px-3 text-sky-400">Windows (CMD)</th>
+                                    <th class="py-2 px-3 text-emerald-400">Linux (Bash)</th>
+                                    <th class="py-2 px-3">คำอธิบาย</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800/50 text-slate-300 text-xs">
+                                <tr>
+                                    <td class="py-2.5 px-3 font-medium">แสดงเนื้อหาทั้งหมด</td>
+                                    <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">type</code> <span class="text-slate-400">file.txt</span></td>
+                                    <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">cat</code> <span class="text-slate-400">file.txt</span></td>
+                                    <td class="py-2.5 px-3 text-slate-400">แสดงข้อความทั้งหมดออกหน้าจอ</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-3 font-medium">เปิดดูทีละหน้า</td>
+                                    <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">more</code> <span class="text-slate-400">file.txt</span></td>
+                                    <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">less</code> <span class="text-slate-400">file.txt</span></td>
+                                    <td class="py-2.5 px-3 text-slate-400">เปิดดูไฟล์ขนาดใหญ่แบบเลื่อนหน้าได้</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-3 font-medium">ดูบรรทัดแรก (Head)</td>
+                                    <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">powershell -c <span class="text-amber-300">"GC"</span></code> <span class="text-slate-400">f</span> <code class="text-sky-400 font-bold">-Head 10</code></td>
+                                    <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">head <span class="text-amber-300">-n 10</span></code> <span class="text-slate-400">f.txt</span></td>
+                                    <td class="py-2.5 px-3 text-slate-400">แสดง 10 บรรทัดแรกของไฟล์</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-3 font-medium">ดูบรรทัดท้าย (Tail / Log)</td>
+                                    <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">powershell -c <span class="text-amber-300">"GC"</span></code> <span class="text-slate-400">f</span> <code class="text-sky-400 font-bold">-Tail 10</code></td>
+                                    <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">tail <span class="text-amber-300">-n 10</span></code> <span class="text-slate-400">f.txt</span></td>
+                                    <td class="py-2.5 px-3 text-slate-400">แสดง 10 บรรทัดสุดท้าย (ดู log)</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-3 font-medium">ค้นหาข้อความในไฟล์</td>
+                                    <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">findstr</code> <span class="text-slate-400">"key" f.txt</span></td>
+                                    <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">grep</code> <span class="text-slate-400">"key" f.txt</span></td>
+                                    <td class="py-2.5 px-3 text-slate-400">ค้นหาคำหรือรูปแบบในไฟล์</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chapter 4 -->
+            <section class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-6 shadow-inner flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 04</span>
+                            <h3 class="text-base font-bold text-slate-200">ข้อมูลระบบและจัดการโพรเซส (System & Processes)</h3>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-400 mb-4">ตรวจสอบสเปกฮาร์ดแวร์ สถานะเน็ตเวิร์ก และการปิดงานโพรเซสที่ค้าง</p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm border-collapse">
+                            <thead>
+                                <tr class="border-b border-slate-800 text-slate-400 text-xs uppercase tracking-wider">
+                                    <th class="py-2 px-3">การทำงาน</th>
+                                    <th class="py-2 px-3 text-sky-400">Windows (CMD)</th>
+                                    <th class="py-2 px-3 text-emerald-400">Linux (Bash)</th>
+                                    <th class="py-2 px-3">คำอธิบาย</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800/50 text-slate-300 text-xs">
+                                <tr>
+                                    <td class="py-2.5 px-3 font-medium">ดูข้อมูลระบบ</td>
+                                    <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">systeminfo</code></td>
+                                    <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">uname <span class="text-amber-300">-a</span></code> <span class="text-slate-500">/</span> <code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">lscpu</code></td>
+                                    <td class="py-2.5 px-3 text-slate-400">ตรวจสอบเวอร์ชัน OS และ CPU</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-3 font-medium">ตรวจสอบ IP Address</td>
+                                    <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">ipconfig</code></td>
+                                    <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">ip <span class="text-amber-300">a</span></code> <span class="text-slate-500">/</span> <code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">ifconfig</code></td>
+                                    <td class="py-2.5 px-3 text-slate-400">ตั้งค่าและดูสถานะอินเตอร์เฟซเน็ตเวิร์ก</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-3 font-medium">ทดสอบการเชื่อมต่อ</td>
+                                    <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">ping</code> <span class="text-slate-400">8.8.8.8</span></td>
+                                    <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">ping <span class="text-amber-300">-c 4</span></code> <span class="text-slate-400">8.8.8.8</span></td>
+                                    <td class="py-2.5 px-3 text-slate-400">เช็คแพ็กเกจการรับส่งข้อมูลเครือข่าย</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-3 font-medium">ดูรายการโพรเซส</td>
+                                    <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">tasklist</code></td>
+                                    <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">ps <span class="text-amber-300">aux</span></code></td>
+                                    <td class="py-2.5 px-3 text-slate-400">แสดงโปรแกรมและโพรเซสที่กำลังทำงาน</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 px-3 font-medium">ปิดโพรเซส (Kill PID)</td>
+                                    <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">taskkill <span class="text-amber-300">/pid 1234 /f</span></code></td>
+                                    <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">kill <span class="text-amber-300">-9</span></code> <span class="text-slate-400">1234</span></td>
+                                    <td class="py-2.5 px-3 text-slate-400">บังคับปิดโพรเซสด้วยรหัส PID</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-8 mb-8">
+            <!-- Chapter 5 -->
+            <section class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-6 shadow-inner">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="bg-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 05</span>
+                    <h3 class="text-sm font-bold text-slate-200">ตัวแปรสภาพแวดล้อมและยูทิลิตี้</h3>
+                </div>
+                <p class="text-xs text-slate-400 mb-3">เคลียร์จอภาพ จัดการตัวแปร session และออกจากเทอร์มินัล</p>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead>
+                            <tr class="border-b border-slate-800 text-slate-400 text-xs uppercase tracking-wider">
+                                <th class="py-2 px-2">การทำงาน</th>
+                                <th class="py-2 px-2 text-sky-400">CMD</th>
+                                <th class="py-2 px-2 text-emerald-400">Linux</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/50 text-slate-300 text-xs">
+                            <tr><td class="py-2 px-2 font-medium">ล้างหน้าจอ</td><td class="py-2 px-2"><code class="text-sky-400 font-bold bg-sky-950/50 px-1 py-0.5 rounded">cls</code></td><td class="py-2 px-2"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1 py-0.5 rounded">clear</code></td></tr>
+                            <tr><td class="py-2 px-2 font-medium">ดูตัวแปร Environment</td><td class="py-2 px-2"><code class="text-sky-400 font-bold bg-sky-950/50 px-1 py-0.5 rounded">set</code></td><td class="py-2 px-2"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1 py-0.5 rounded">printenv</code></td></tr>
+                            <tr><td class="py-2 px-2 font-medium">กำหนดตัวแปรชั่วคราว</td><td class="py-2 px-2"><code class="text-sky-400 font-bold bg-sky-950/50 px-1 py-0.5 rounded">set</code> <span class="text-slate-400">V=val</span></td><td class="py-2 px-2"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1 py-0.5 rounded">export</code> <span class="text-slate-400">V="val"</span></td></tr>
+                            <tr><td class="py-2 px-2 font-medium">ออกจากเทอร์มินัล</td><td class="py-2 px-2"><code class="text-sky-400 font-bold bg-sky-950/50 px-1 py-0.5 rounded">exit</code></td><td class="py-2 px-2"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1 py-0.5 rounded">exit</code></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Chapter 6 -->
+            <section class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-6 shadow-inner">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="bg-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 06</span>
+                    <h3 class="text-sm font-bold text-slate-200">การจัดการสิทธิ์และเจ้าของไฟล์</h3>
+                </div>
+                <p class="text-xs text-slate-400 mb-3">ควบคุมสิทธิ์การอ่าน เขียน และรันไฟล์ (เช่น chmod 755)</p>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead>
+                            <tr class="border-b border-slate-800 text-slate-400 text-xs uppercase tracking-wider">
+                                <th class="py-2 px-2">การทำงาน</th>
+                                <th class="py-2 px-2 text-sky-400">Windows</th>
+                                <th class="py-2 px-2 text-emerald-400">Linux</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/50 text-slate-300 text-xs">
+                            <tr><td class="py-2 px-2 font-medium">ดูสิทธิ์ไฟล์</td><td class="py-2 px-2"><code class="text-sky-400 font-bold bg-sky-950/50 px-1 py-0.5 rounded">icacls</code> <span class="text-slate-400">f</span></td><td class="py-2 px-2"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1 py-0.5 rounded">ls <span class="text-amber-300">-l</span></code> <span class="text-slate-400">f</span></td></tr>
+                            <tr><td class="py-2 px-2 font-medium">เปลี่ยนสิทธิ์ (chmod)</td><td class="py-2 px-2"><code class="text-sky-400 font-bold bg-sky-950/50 px-1 py-0.5 rounded">icacls <span class="text-amber-300">/grant</span></code></td><td class="py-2 px-2"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1 py-0.5 rounded">chmod <span class="text-amber-300">755</span></code> <span class="text-slate-400">f</span></td></tr>
+                            <tr><td class="py-2 px-2 font-medium">เปลี่ยนเจ้าของ (chown)</td><td class="py-2 px-2"><code class="text-sky-400 font-bold bg-sky-950/50 px-1 py-0.5 rounded">takeown <span class="text-amber-300">/f</span></code></td><td class="py-2 px-2"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1 py-0.5 rounded">chown</code> <span class="text-slate-400">u:g f</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Chapter 7 -->
+            <section class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-6 shadow-inner">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="bg-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 07</span>
+                    <h3 class="text-sm font-bold text-slate-200">การวินิจฉัยเครือข่ายเบื้องต้น</h3>
+                </div>
+                <p class="text-xs text-slate-400 mb-3">ตรวจสอบ DNS, Trace route และเช็คพอร์ตที่เปิดใช้งาน</p>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead>
+                            <tr class="border-b border-slate-800 text-slate-400 text-xs uppercase tracking-wider">
+                                <th class="py-2 px-2">การทำงาน</th>
+                                <th class="py-2 px-2 text-sky-400">CMD</th>
+                                <th class="py-2 px-2 text-emerald-400">Linux</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/50 text-slate-300 text-xs">
+                            <tr><td class="py-2 px-2 font-medium">ตรวจสอบ DNS</td><td class="py-2 px-2"><code class="text-sky-400 font-bold bg-sky-950/50 px-1 py-0.5 rounded">nslookup</code></td><td class="py-2 px-2"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1 py-0.5 rounded">dig</code> <span class="text-slate-500">/</span> <code class="text-emerald-400 font-bold bg-emerald-950/50 px-1 py-0.5 rounded">nslookup</code></td></tr>
+                            <tr><td class="py-2 px-2 font-medium">เส้นทางเน็ตเวิร์ก</td><td class="py-2 px-2"><code class="text-sky-400 font-bold bg-sky-950/50 px-1 py-0.5 rounded">tracert</code></td><td class="py-2 px-2"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1 py-0.5 rounded">traceroute</code></td></tr>
+                            <tr><td class="py-2 px-2 font-medium">ตรวจสอบพอร์ต (Ports)</td><td class="py-2 px-2"><code class="text-sky-400 font-bold bg-sky-950/50 px-1 py-0.5 rounded">netstat <span class="text-amber-300">-ano</span></code></td><td class="py-2 px-2"><code class="text-emerald-400 font-bold bg-sky-950/50 px-1 py-0.5 rounded">ss <span class="text-amber-300">-tuln</span></code></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+
+        <section class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-6 shadow-inner mb-8">
+            <div class="flex items-center justify-between mb-4 flex-wrap gap-4">
+                <div class="flex items-center gap-3">
+                    <span class="bg-emerald-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 08</span>
+                    <h3 class="text-lg font-bold text-slate-200">การวินิจฉัยเครือข่ายเชิงลึก (Network Diagnostics & Connectivity Reference)</h3>
+                </div>
+                <span class="bg-emerald-500/10 text-emerald-400 text-xs px-3 py-1 rounded-lg border border-emerald-500/30">IP Ping, Routing, Ports, Flush DNS & DHCP</span>
+            </div>
+            <p class="text-xs text-slate-400 mb-6">รวบรวมคำสั่งตรวจสอบระบบเครือข่ายอย่างละเอียด ทั้งการเช็คเกตเวย์ แพ็กเกจลอสด์ การเทสต์พอร์ต และการเคลียร์ DNS Cache</p>
+            
+            <div class="overflow-x-auto mb-4">
+                <table class="w-full text-left text-sm border-collapse">
+                    <thead>
+                        <tr class="border-b border-slate-800 text-slate-400 text-xs uppercase tracking-wider">
+                            <th class="py-2 px-3">หมวดหมู่ / งาน (Task)</th>
+                            <th class="py-2 px-3 text-sky-400">Windows (CMD / PowerShell)</th>
+                            <th class="py-2 px-3 text-emerald-400">Linux (Ubuntu Terminal)</th>
+                            <th class="py-2 px-3">คำอธิบายเพิ่มเติม</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800/50 text-slate-300 text-xs">
+                        <tr>
+                            <td class="py-2.5 px-3 font-medium">เช็ค IP Address ตัวเอง</td>
+                            <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">ipconfig</code></td>
+                            <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">ip <span class="text-amber-300">a</span></code> <span class="text-slate-500">(หรือ ifconfig)</span></td>
+                            <td class="py-2.5 px-3 text-slate-400">ตรวจสอบหมายเลขไอพีและการ์ดแลนปัจจุบัน</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2.5 px-3 font-medium">เช็คการ์ดเน็ตเวิร์กตัวเอง (Localhost)</td>
+                            <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">ping <span class="text-slate-400">127.0.0.1</span></code></td>
+                            <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">ping <span class="text-slate-400">127.0.0.1</span></code></td>
+                            <td class="py-2.5 px-3 text-slate-400">ทดสอบระบบภายในเครื่องว่า TCP/IP ทำงานปกติไหม</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2.5 px-3 font-medium">เช็คการเชื่อมต่อเร้าเตอร์ (Gateway)</td>
+                            <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">ping</code> <span class="text-slate-400">192.168.1.1</span></td>
+                            <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">ping</code> <span class="text-slate-400">192.168.1.1</span></td>
+                            <td class="py-2.5 px-3 text-slate-400">เช็คสัญญาณเชื่อมต่อไปยังตัวกระจายสัญญาณอินเทอร์เน็ต</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2.5 px-3 font-medium">เช็คการออกเน็ตภายนอก / DNS</td>
+                            <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">ping <span class="text-slate-400">8.8.8.8</span></code> <span class="text-slate-500">หรือ</span> <code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">ping <span class="text-slate-400">google.com</span></code></td>
+                            <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">ping <span class="text-amber-300">-c 4</span> <span class="text-slate-400">8.8.8.8</span></code></td>
+                            <td class="py-2.5 px-3 text-slate-400">ทดสอบว่าออกอินเทอร์เน็ตและแปลงชื่อโดเมนได้หรือไม่</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2.5 px-3 font-medium">เช็คความเสถียร / Packet Loss</td>
+                            <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">ping <span class="text-slate-400">8.8.8.8</span> <span class="text-amber-300">-t</span></code></td>
+                            <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">ping <span class="text-slate-400">8.8.8.8</span></code></td>
+                            <td class="py-2.5 px-3 text-slate-400">ปิงต่อเนื่องยาวๆ (กด <code class="text-amber-300">Ctrl+C</code> เพื่อหยุด)</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2.5 px-3 font-medium">ดูเส้นทางข้อมูล (Traceroute)</td>
+                            <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">tracert <span class="text-slate-400">8.8.8.8</span></code></td>
+                            <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">traceroute <span class="text-slate-400">8.8.8.8</span></code></td>
+                            <td class="py-2.5 px-3 text-slate-400">เช็คฮอป (Hops) ทุกโหนดที่สัญญาณวิ่งผ่าน</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2.5 px-3 font-medium">เช็คพอร์ตเฉพาะ (เปิดอยู่ไหม)</td>
+                            <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">Test-NetConnection <span class="text-slate-400">IP</span> <span class="text-amber-300">-Port 443</span></code></td>
+                            <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">nc <span class="text-amber-300">-zv</span> <span class="text-slate-400">IP port</span></code></td>
+                            <td class="py-2.5 px-3 text-slate-400">ตรวจสอบว่าบริการปลายทาง (เช่น เว็บ, DB) เปิดพอร์ตรับไหม</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2.5 px-3 font-medium">ล้างแคช DNS (Flush DNS)</td>
+                            <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">ipconfig <span class="text-amber-300">/flushdns</span></code></td>
+                            <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">sudo systemd-resolve <span class="text-amber-300">--flush-caches</span></code></td>
+                            <td class="py-2.5 px-3 text-slate-400">เคลียร์ DNS เก่าเมื่อเว็บไซต์เปลี่ยน IP ใหม่</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2.5 px-3 font-medium">ขอ IP Address ใหม่จาก DHCP</td>
+                            <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">ipconfig <span class="text-amber-300">/renew</span></code></td>
+                            <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">sudo dhclient <span class="text-amber-300">-r</span> && sudo dhclient</code></td>
+                            <td class="py-2.5 px-3 text-slate-400">รีเฟรชขอรับหมายเลขไอพีใหม่จากเร้าเตอร์วงแลน</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-6 shadow-inner mb-8">
+            <div class="flex items-center justify-between mb-4 flex-wrap gap-4">
+                <div class="flex items-center gap-3">
+                    <span class="bg-purple-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 09</span>
+                    <h3 class="text-lg font-bold text-slate-200">การเชื่อมต่อฮาร์ดดิสก์ (Disk Mounting) และแนวปฏิบัติกรณี "กู้ไฟล์" (Data Recovery)</h3>
+                </div>
+                <span class="bg-purple-500/10 text-purple-400 text-xs px-3 py-1 rounded-lg border border-purple-500/30">External Windows Drive on Linux (Ubuntu)</span>
+            </div>
+            <p class="text-xs text-slate-400 mb-6">คำสั่งเทียบเคียงและขั้นตอนการเชื่อมต่อฮาร์ดดิสก์วินโดวส์ (NTFS/exFAT) เข้ากับ Linux เพื่อดึงข้อมูลและกู้ไฟล์อย่างปลอดภัย</p>
+            
+            <div class="overflow-x-auto mb-6">
+                <table class="w-full text-left text-sm border-collapse">
+                    <thead>
+                        <tr class="border-b border-slate-800 text-slate-400 text-xs uppercase tracking-wider">
+                            <th class="py-2 px-3">ขั้นตอน / การทำงาน</th>
+                            <th class="py-2 px-3 text-sky-400">Windows (CMD / PowerShell)</th>
+                            <th class="py-2 px-3 text-emerald-400">Linux (Ubuntu Terminal)</th>
+                            <th class="py-2 px-3">คำอธิบายเพิ่มเติม</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800/50 text-slate-300 text-xs">
+                        <tr>
+                            <td class="py-2.5 px-3 font-medium">1. ค้นหาและดูพาร์ทิชัน</td>
+                            <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">diskpart</code> <span class="text-slate-400">list volume</span></td>
+                            <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">lsblk <span class="text-amber-300">-f</span></code> <span class="text-slate-500">/</span> <code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">sudo fdisk <span class="text-amber-300">-l</span></code></td>
+                            <td class="py-2.5 px-3 text-slate-400">ตรวจสอบชื่ออุปกรณ์ (เช่น <code class="text-slate-400">/dev/sdb1</code>)</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2.5 px-3 font-medium">2. สร้างจุดเชื่อม (Mount Point)</td>
+                            <td class="py-2.5 px-3"><span class="text-slate-500">จัดการอักษรไดรฟ์ให้อัตโนมัติ</span></td>
+                            <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">sudo mkdir <span class="text-amber-300">-p</span></code> <span class="text-slate-400">/mnt/win_backup</span></td>
+                            <td class="py-2.5 px-3 text-slate-400">สร้างโฟลเดอร์รองรับข้อมูลบน Linux</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2.5 px-3 font-medium">3. Mount แบบอ่านอย่างเดียว (Read-Only)</td>
+                            <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">mountvol</code> <span class="text-slate-400">E: \\?\Volume{...}</span></td>
+                            <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">sudo mount <span class="text-amber-300">-o ro</span></code> <span class="text-slate-400">/dev/sdb1 /mnt/win_backup</span></td>
+                            <td class="py-2.5 px-3 text-slate-400"><b>สำคัญมาก:</b> ใช้ <code class="text-amber-300 font-bold">-o ro</code> เพื่อความปลอดภัย ไม่ให้เขียนทับข้อมูล</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2.5 px-3 font-medium">4. คัดลอกไฟล์กู้คืน</td>
+                            <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">xcopy <span class="text-amber-300">/s /e</span></code> <span class="text-slate-400">E:\ data D:\recovery</span></td>
+                            <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">cp <span class="text-amber-300">-r</span></code> <span class="text-slate-400">/mnt/win_backup/Users/... ~/recovery/</span></td>
+                            <td class="py-2.5 px-3 text-slate-400">คัดลอกข้อมูลสำคัญไปไว้ที่ไดรฟ์สำรอง</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2.5 px-3 font-medium">5. ยกเลิกการเชื่อมต่อ (Unmount)</td>
+                            <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">mountvol</code> <span class="text-slate-400">E:</span> <code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">/d</code></td>
+                            <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">sudo umount</code> <span class="text-slate-400">/mnt/win_backup</span></td>
+                            <td class="py-2.5 px-3 text-slate-400">ถอดการเชื่อมต่ออย่างปลอดภัยก่อนดึงสาย</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-4 text-xs text-amber-200/90 space-y-2">
+                <div class="font-bold flex items-center gap-2 text-amber-300">
+                    <i class="fa-solid fa-triangle-exclamation"></i> ข้อควรระวังสำคัญกรณี "กู้ไฟล์" (Data Recovery Best Practices)
+                </div>
+                <ul class="list-disc list-inside space-y-1 text-slate-300">
+                    <li><b>ใช้โหมด Read-Only (<code class="text-amber-300 font-bold">-o ro</code>) เสมอ:</b> ป้องกันไม่ให้ Linux พยายามซ่อมแซมหรือเขียนทับไฟล์ระบบ NTFS ที่เสียหาย ซึ่งจะทำให้อัตราการกู้คืนไฟล์ลดลง</li>
+                    <li><b>ปัญหา Fast Startup / Hibernation ของ Windows:</b> หากฮาร์ดดิสก์ลูกนั้นเคยเปิดโหมด Fast Startup ไว้ Linux อาจฟ้อง Unsafe สามารถแก้ไขด้วยคำสั่ง: <code class="text-emerald-300 font-bold bg-emerald-950/50 px-1 rounded">sudo mount <span class="text-amber-300">-t ntfs-3g -o ro,remove_hiberfile</span> <span class="text-slate-400">/dev/sdb1 /mnt/win_backup</span></code></li>
+                    <li><b>การจัดการสิทธิ์ไฟล์ (Permissions):</b> หากกู้ไฟล์มาแล้วเปิดดูไม่ได้ ให้ปรับสิทธิ์การเข้าถึงด้วย <code class="text-emerald-300 font-bold bg-emerald-950/50 px-1 rounded">sudo chmod <span class="text-amber-300">-R 755</span> <span class="text-slate-400">/mnt/win_backup</span></code></li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="border-t border-slate-800 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
+            <p>© Senior Computer Systems Architect & Tech Knowledge Specialist • ครบถ้วน 9 บทเรียนสำคัญพร้อมคำอธิบายภาษาไทยและ Gemini API</p>
+            <p>ออกแบบสำหรับหน้าจอขนาดใหญ่และการพิมพ์ในรูปแบบ A3 Landscape</p>
+        </div>
+
+    </main>
+
+    <div id="aiModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+            <div class="p-4 bg-slate-800 border-b border-slate-700 flex justify-between items-center">
+                <div class="flex items-center gap-2 text-purple-400 font-bold">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <span>Gemini CLI Command Expert</span>
+                </div>
+                <button onclick="closeAiModal()" class="text-slate-400 hover:text-white transition">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            <div class="p-6 overflow-y-auto flex-1 space-y-4">
+                <p class="text-xs text-slate-400">พิมพ์คำสั่งหรือปัญหาเน็ตเวิร์กที่คุณต้องการสอบถาม (เช่น "วิธีเช็คพอร์ตด้วย nc หรือ netstat" หรือ "วิธี flush dns บน ubuntu") เพื่อให้ Gemini วิเคราะห์ทันที:</p>
+                <div class="flex gap-2">
+                    <input type="text" id="aiPromptInput" placeholder="พิมพ์คำถามหรือโจทย์คำสั่งที่ต้องการ..." class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-purple-500" onkeypress="if(event.key === 'Enter') askGemini()">
+                    <button onclick="askGemini()" id="aiSubmitBtn" class="bg-purple-600 hover:bg-purple-500 text-white px-5 py-2.5 rounded-xl text-sm font-medium transition flex items-center gap-2 shadow-md">
+                        <i class="fa-solid fa-paper-plane"></i> สอบถาม
+                    </button>
+                </div>
+                <div id="aiLoading" class="hidden text-center py-6">
+                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-purple-500 border-t-transparent"></div>
+                    <p class="text-xs text-slate-400 mt-2">Gemini กำลังวิเคราะห์และเรียบเรียงคำตอบ...</p>
+                </div>
+                <div id="aiResponseContainer" class="hidden bg-slate-950 border border-slate-800 rounded-xl p-4 text-sm text-slate-300 space-y-3 font-mono">
+                    <!-- Results rendered here -->
+                </div>
+            </div>
+            <div class="p-4 bg-slate-950 border-t border-slate-800 text-right">
+                <button onclick="closeAiModal()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-4 py-2 rounded-xl text-xs transition">ปิดหน้าต่าง</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+
+        function openAiModal() {
+            document.getElementById('aiModal').classList.remove('hidden');
+            document.getElementById('aiPromptInput').focus();
+        }
+
+        function closeAiModal() {
+            document.getElementById('aiModal').classList.add('hidden');
+        }
+
+        async function fetchWithRetry(url, options, retries = 5, delay = 1000) {
+            try {
+                const response = await fetch(url, options);
+                if (!response.ok) {
+                    if (response.status === 429 && retries > 0) {
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                        return fetchWithRetry(url, options, retries - 1, delay * 2);
+                    }
+                    throw new Error(`API Error: ${response.status}`);
+                }
+                return await response.json();
+            } catch (error) {
+                if (retries > 0) {
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    return fetchWithRetry(url, options, retries - 1, delay * 2);
+                }
+                throw error;
+            }
+        }
+
+        async function askGemini() {
+            const promptInput = document.getElementById('aiPromptInput');
+            const userQuery = promptInput.value.trim();
+            if (!userQuery) return;
+
+            const loadingEl = document.getElementById('aiLoading');
+            const responseContainer = document.getElementById('aiResponseContainer');
+            const submitBtn = document.getElementById('aiSubmitBtn');
+
+            loadingEl.classList.remove('hidden');
+            responseContainer.classList.add('hidden');
+            responseContainer.innerHTML = '';
+            submitBtn.disabled = true;
+
+            const systemPrompt = "คุณคือ Senior Computer Systems Architect ผู้เชี่ยวชาญระบบ Windows และ Linux CLI หน้าที่ของคุณคือให้คำแนะนำ เปรียบเทียบคำสั่ง CMD และ Linux Bash/Ubuntu พร้อมอธิบายเชิงลึกและตัวอย่างการใช้งานเป็นภาษาไทยที่กระชับ ชัดเจน และเข้าใจง่าย";
+            
+            const apiKey = ""; 
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                }
+            };
+
+            try {
+                const result = await fetchWithRetry(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const candidate = result.candidates?.[0];
+                if (candidate && candidate.content?.parts?.[0]?.text) {
+                    const text = candidate.content.parts[0].text;
+                    responseContainer.innerHTML = `<div class="text-purple-400 font-sans font-bold text-xs uppercase tracking-wider mb-2">คำตอบจาก Gemini AI:</div><div class="whitespace-pre-wrap text-xs font-sans text-slate-200 leading-relaxed">${escapeHtml(text)}</div>`;
+                    responseContainer.classList.remove('hidden');
+                } else {
+                    responseContainer.innerHTML = `<p class="text-red-400 text-xs">ไม่พบคำตอบจากระบบ AI กรุณาลองใหม่อีกครั้ง</p>`;
+                    responseContainer.classList.remove('hidden');
+                }
+            } catch (err) {
+                responseContainer.innerHTML = `<p class="text-red-400 text-xs">เกิดข้อผิดพลาดในการเชื่อมต่อ Gemini API: ${err.message}</p>`;
+                responseContainer.classList.remove('hidden');
+            } finally {
+                loadingEl.classList.add('hidden');
+                submitBtn.disabled = false;
+            }
+        }
+
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="th" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คู่มือการจัดการ Git และ GitHub ฉบับสมบูรณ์สำหรับ Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#090d16',
+                        cardbg: '#111827',
+                        accentgit: '#f97316',
+                        accentgithub: '#8b5cf6',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Prompt:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Prompt', sans-serif; }
+        code, pre { font-family: 'Fira Code', monospace; }
+        @media print {
+            body { background: white !important; color: black !important; }
+            .no-print { display: none !important; }
+            .a3-sheet { box-shadow: none !important; border: none !important; width: 100% !important; margin: 0 !important; padding: 10mm !important; }
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen p-4 md:p-8 flex flex-col items-center">
+
+    <div class="no-print w-full max-w-[1600px] flex justify-between items-center mb-6 bg-slate-900 border border-slate-800 p-4 rounded-xl shadow-xl flex-wrap gap-4">
+        <div class="flex items-center gap-3">
+            <div class="bg-gradient-to-r from-orange-500 via-purple-500 to-indigo-600 p-2.5 rounded-lg text-white font-bold shadow-lg shadow-orange-500/20">
+                <i class="fa-brands fa-github text-xl"></i>
+            </div>
+            <div>
+                <h1 class="text-xl font-bold tracking-tight text-white">คู่มือการจัดการ Git และ GitHub ฉบับสมบูรณ์สำหรับ Developer</h1>
+                <p class="text-xs text-slate-400">A3 Presentation Layout • ครบถ้วนทุกขั้นตอนการจัดการ Branch, การลบกิ่ง และ Gemini AI Assistant</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-3 flex-wrap">
+            <button onclick="openAiModal()" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition flex items-center gap-2 shadow-md shadow-purple-600/20">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> ถาม Gemini AI ผู้ช่วย Git
+            </button>
+            <button onclick="window.print()" class="bg-orange-600 hover:bg-orange-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition flex items-center gap-2 shadow-md">
+                <i class="fa-solid fa-print"></i> พิมพ์ / บันทึก PDF (A3)
+            </button>
+            <button onclick="toggleTheme()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-2 rounded-lg text-sm transition">
+                <i class="fa-solid fa-circle-half-stroke"></i>
+            </button>
+        </div>
+    </div>
+
+    <main class="a3-sheet w-full max-w-[1600px] bg-slate-900 border border-slate-800 rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+        
+        <!-- Header Banner -->
+        <div class="border-b border-slate-800 pb-8 mb-8 flex flex-col xl:flex-row justify-between items-start xl:items-end gap-6">
+            <div>
+                <span class="bg-orange-500/10 text-orange-400 text-xs font-semibold px-3 py-1 rounded-full border border-orange-500/20 uppercase tracking-widest shadow-sm">Complete Developer Edition</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mt-3 text-white">Git & GitHub <span class="text-slate-500 font-light">Handbook</span></h2>
+                <p class="text-slate-400 mt-2 text-sm md:text-base max-w-3xl">นักพัฒนาและผู้เริ่มต้นใช้งาน ที่ต้องการเรียนรู้ระบบ Version Control ตั้งแต่พื้นฐานการติดตั้ง จนถึงขั้นตอนนี้การจัดการ Branch, การลบกิ่ง และ Workflow การทำงานจริง</p>
+            </div>
+            <div class="flex gap-3 text-sm font-semibold flex-wrap">
+                <div class="bg-orange-500/10 border border-orange-500/30 text-orange-400 px-4 py-2 rounded-xl flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-code-branch"></i> Version Control
+                </div>
+                <div class="bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 px-4 py-2 rounded-xl flex items-center gap-2 shadow-sm">
+                    <i class="fa-brands fa-github"></i> Cloud Collaboration
+                </div>
+                <div class="bg-purple-500/10 border border-purple-500/30 text-purple-400 px-4 py-2 rounded-xl flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-brain"></i> Gemini API
+                </div>
+            </div>
+        </div>
+
+        <!-- Chapters Infographic Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-6 gap-3 mb-8">
+            <div class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-3 text-center">
+                <span class="text-[10px] font-bold text-orange-400">CHAPTER 01</span>
+                <h4 class="text-xs font-semibold text-slate-200 mt-1">Initial Setup</h4>
+            </div>
+            <div class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-3 text-center">
+                <span class="text-[10px] font-bold text-orange-400">CHAPTER 02</span>
+                <h4 class="text-xs font-semibold text-slate-200 mt-1">Daily Workflow</h4>
+            </div>
+            <div class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-3 text-center">
+                <span class="text-[10px] font-bold text-orange-400">CHAPTER 03</span>
+                <h4 class="text-xs font-semibold text-slate-200 mt-1">Branch Strategy</h4>
+            </div>
+            <div class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-3 text-center">
+                <span class="text-[10px] font-bold text-orange-400">CHAPTER 04</span>
+                <h4 class="text-xs font-semibold text-slate-200 mt-1">Deleting Branches</h4>
+            </div>
+            <div class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-3 text-center">
+                <span class="text-[10px] font-bold text-orange-400">CHAPTER 05</span>
+                <h4 class="text-xs font-semibold text-slate-200 mt-1">Merging Code</h4>
+            </div>
+            <div class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-3 text-center">
+                <span class="text-[10px] font-bold text-purple-400">CHAPTER 06</span>
+                <h4 class="text-xs font-semibold text-slate-200 mt-1">Pro Tips & AI</h4>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-8">
+            
+            <!-- Chapter 1 -->
+            <section class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-6 shadow-inner flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="bg-orange-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 01</span>
+                        <h3 class="text-base font-bold text-slate-200">บทนำและการติดตั้งครั้งแรก (Initial Setup & Installation)</h3>
+                    </div>
+                    <p class="text-xs text-slate-400 mb-4">เตรียมความพร้อมเครื่องคอมพิวเตอร์และตั้งค่าตัวตนพื้นฐานก่อนเริ่มใช้งาน Git</p>
+                    <div class="space-y-3 text-xs">
+                        <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
+                            <div class="font-semibold text-orange-300 mb-1">1.1 ติดตั้ง Git บนเครื่องคอมพิวเตอร์</div>
+                            <div class="space-y-1.5 mt-2 font-mono">
+                                <div><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">sudo apt update <span class="text-slate-400">&amp;&amp;</span> sudo apt install <span class="text-amber-300">git</span></code> <span class="text-slate-500 text-[11px] font-sans block mt-0.5">Ubuntu / Debian</span></div>
+                                <div><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">brew install <span class="text-amber-300">git</span></code> <span class="text-slate-500 text-[11px] font-sans block mt-0.5">macOS (Homebrew)</span></div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
+                            <div class="font-semibold text-orange-300 mb-1">1.2 ตั้งค่าบัญชีผู้ใช้ (Identity)</div>
+                            <div class="space-y-1.5 mt-2 font-mono">
+                                <div><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">git config <span class="text-amber-300">--global</span> user.name <span class="text-slate-400">"Your Name"</span></code></div>
+                                <div><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">git config <span class="text-amber-300">--global</span> user.email <span class="text-slate-400">"your.email@example.com"</span></code></div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
+                            <div class="font-semibold text-orange-300 mb-1">1.3 ตรวจสอบการตั้งค่า</div>
+                            <div class="mt-2 font-mono">
+                                <div><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">git config <span class="text-amber-300">--list</span></code></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chapter 2 -->
+            <section class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-6 shadow-inner flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="bg-orange-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 02</span>
+                        <h3 class="text-base font-bold text-slate-200">วงจรการทำงานประจำวัน (Daily Git Workflow)</h3>
+                    </div>
+                    <p class="text-xs text-slate-400 mb-4">ลำดับขั้นตอนพื้นฐานในการเช็คสถานะ บันทึกงาน และส่งขึ้นคลาวด์</p>
+                    <div class="space-y-3 text-xs">
+                        <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
+                            <div class="font-semibold text-orange-300 mb-1">ตรวจสอบสถานะและกิ่งปัจจุบันก่อนเริ่มลงมือเขียนโค้ด</div>
+                            <div class="space-y-1.5 mt-2 font-mono">
+                                <div><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">git branch</code></div>
+                                <div><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">git status</code></div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
+                            <div class="font-semibold text-orange-300 mb-1">บันทึกและส่งโค้ดขึ้น GitHub เมื่อแก้ไขเสร็จสิ้น</div>
+                            <div class="space-y-1.5 mt-2 font-mono">
+                                <div><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">git add <span class="text-amber-300">.</span></code></div>
+                                <div><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">git commit <span class="text-amber-300">-m</span> <span class="text-slate-400">"ข้อความอธิบายการเปลี่ยนแปลง"</span></code></div>
+                                <div><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">git push</code></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-8">
+            
+            <!-- Chapter 3 -->
+            <section class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-6 shadow-inner flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="bg-orange-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 03</span>
+                        <h3 class="text-base font-bold text-slate-200">การจัดการ Branch สำหรับพัฒนาฟีเจอร์ใหม่</h3>
+                    </div>
+                    <p class="text-xs text-slate-400 mb-4">เทคนิคการแยกกิ่งงานเพื่อไม่ให้กระทบกับโค้ดหลักบน main และการ Push ขึ้น GitHub ครั้งแรก</p>
+                    
+                    <div class="space-y-3 text-xs">
+                        <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
+                            <div class="font-semibold text-orange-300 mb-1">สร้างและสลับไปกิ่งใหม่ทันที (กรณีเผลอเขียนบน main สามารถใช้คำสั่งนี้ย้ายโค้ดตามมาได้)</div>
+                            <div class="mt-2 font-mono">
+                                <code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">git switch <span class="text-amber-300">-c</span> <span class="text-slate-400">ชื่อกิ่งใหม่</span></code>
+                            </div>
+                        </div>
+                        <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
+                            <div class="font-semibold text-orange-300 mb-1">ส่งกิ่งใหม่ขึ้น GitHub เป็นครั้งแรก (ผูกลิงก์รีโมท)</div>
+                            <div class="mt-2 font-mono">
+                                <code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">git push <span class="text-amber-300">-u origin</span> <span class="text-slate-400">ชื่อกิ่งใหม่</span></code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chapter 4: Deleting Branches (NEW) -->
+            <section class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-6 shadow-inner flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="bg-orange-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 04</span>
+                        <h3 class="text-base font-bold text-slate-200">การลบกิ่ง (Deleting Branches) ทั้งแบบ Local และ Remote</h3>
+                    </div>
+                    <p class="text-xs text-slate-400 mb-4">หลังจากรวมกิ่ง (Merge) เข้าสู่ main เรียบร้อยแล้ว ควรลบกิ่งฟีเจอร์ที่ไม่ใช้แล้วทิ้งเพื่อความสะอาดของโปรเจกต์</p>
+                    <div class="space-y-3 text-xs">
+                        <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
+                            <div class="font-semibold text-orange-300 mb-1">4.1 ลบกิ่งในเครื่องคอมพิวเตอร์ (Local Branch)</div>
+                            <div class="space-y-1.5 mt-2 font-mono">
+                                <div><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">git branch <span class="text-amber-300">-d</span> <span class="text-slate-400">ชื่อกิ่ง</span></code> <span class="text-slate-500 font-sans text-[11px] block mt-0.5">ลบปกติ (ต้องผ่านการ merge แล้วเท่านั้น)</span></div>
+                                <div><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">git branch <span class="text-amber-300">-D</span> <span class="text-slate-400">ชื่อกิ่ง</span></code> <span class="text-slate-500 font-sans text-[11px] block mt-0.5">บังคับลบ (กรณีไม่ได้ merge แต่ต้องการลบทิ้งทันที)</span></div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
+                            <div class="font-semibold text-orange-300 mb-1">4.2 ลบกิ่งบนคลาวด์ GitHub (Remote Branch)</div>
+                            <div class="mt-2 font-mono">
+                                <div><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">git push origin <span class="text-amber-300">--delete</span> <span class="text-slate-400">ชื่อกิ่ง</span></code></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-8">
+            
+            <!-- Chapter 5 -->
+            <section class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-6 shadow-inner flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="bg-orange-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 05</span>
+                        <h3 class="text-base font-bold text-slate-200">การรวมกิ่ง (Merging)</h3>
+                    </div>
+                    <p class="text-xs text-slate-400 mb-4">ขั้นตอนการดึงโค้ดล่าสุดจาก main มารวมกับฟีเจอร์ที่เราทำเสร็จแล้ว</p>
+                    <div class="space-y-3 text-xs">
+                        <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
+                            <div class="font-semibold text-orange-300 mb-1">สลับมาที่กิ่ง main และอัปเดตโค้ดให้เป็นปัจจุบัน</div>
+                            <div class="space-y-1.5 mt-2 font-mono">
+                                <div><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">git checkout main</code></div>
+                                <div><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">git pull</code></div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
+                            <div class="font-semibold text-orange-300 mb-1">ดึงกิ่งฟีเจอร์มารวมเข้ากับ main</div>
+                            <div class="mt-2 font-mono">
+                                <code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">git merge <span class="text-slate-400">ชื่อกิ่งฟีเจอร์</span></code>
+                            </div>
+                        </div>
+                        <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
+                            <div class="font-semibold text-orange-300 mb-1">ส่งโค้ดที่รวมแล้วขึ้น GitHub</div>
+                            <div class="mt-2 font-mono">
+                                <code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">git push</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chapter 6 -->
+            <section class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-6 shadow-inner flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="bg-purple-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 06</span>
+                        <h3 class="text-base font-bold text-slate-200">คำสั่งเสริมที่มีประโยชน์และ Pro Tips</h3>
+                    </div>
+                    <p class="text-xs text-slate-400 mb-4">เทคนิคและคำสั่งฉุกเฉินในการแก้ไขสถานการณ์เฉพาะหน้า</p>
+                    <div class="space-y-3 text-xs">
+                        <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
+                            <div class="font-semibold text-purple-300 mb-1">การยกเลิกการเปลี่ยนแปลงทั้งหมด (Hard Reset & Clean)</div>
+                            <div class="font-mono space-y-1 mt-1">
+                                <div><code class="text-sky-300 font-bold bg-sky-950/50 px-1 py-0.5 rounded text-[11px]">git reset <span class="text-amber-300">--hard</span> HEAD</code></div>
+                                <div><code class="text-sky-300 font-bold bg-sky-950/50 px-1 py-0.5 rounded text-[11px]">git clean <span class="text-amber-300">-fd</span></code></div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
+                            <div class="font-semibold text-purple-300 mb-1">ดูประวัติแบบกราฟย่อ</div>
+                            <div class="font-mono mt-1">
+                                <code class="text-sky-300 font-bold bg-sky-950/50 px-1 py-0.5 rounded text-[11px]">git log <span class="text-amber-300">--oneline --graph --all</span></code>
+                            </div>
+                        </div>
+                        <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
+                            <div class="font-semibold text-purple-300 mb-1">แก้ไขข้อความ Commit ล่าสุด</div>
+                            <div class="font-mono mt-1">
+                                <code class="text-sky-300 font-bold bg-sky-950/50 px-1 py-0.5 rounded text-[11px]">git commit <span class="text-amber-300">--amend</span> -m <span class="text-slate-400">"ข้อความใหม่"</span></code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="border-t border-slate-800 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
+            <p>© Senior Computer Systems Architect & Tech Knowledge Specialist • คู่มือ Git & GitHub ฉบับสมบูรณ์พร้อมระบบผู้ช่วย Gemini AI</p>
+            <p>ออกแบบสำหรับหน้าจอขนาดใหญ่และการพิมพ์ในรูปแบบ A3 Landscape</p>
+        </div>
+
+    </main>
+
+    <div id="aiModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+            <div class="p-4 bg-slate-800 border-b border-slate-700 flex justify-between items-center">
+                <div class="flex items-center gap-2 text-purple-400 font-bold">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <span>Gemini GitHub Command Expert</span>
+                </div>
+                <button onclick="closeAiModal()" class="text-slate-400 hover:text-white transition">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            <div class="p-6 overflow-y-auto flex-1 space-y-4">
+                <p class="text-xs text-slate-400">พิมพ์คำถามหรือโจทย์ที่คุณต้องการให้ Gemini ช่วยเหลือ (เช่น "วิธีลบ branch ทั้ง local และ remote ทำอย่างไร" หรือ "อธิบายการใช้ git switch -c"):</p>
+                <div class="flex gap-2">
+                    <input type="text" id="aiPromptInput" placeholder="พิมพ์คำถามหรือโจทย์เกี่ยวกับ Git/GitHub..." class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-purple-500" onkeypress="if(event.key === 'Enter') askGemini()">
+                    <button onclick="askGemini()" id="aiSubmitBtn" class="bg-purple-600 hover:bg-purple-500 text-white px-5 py-2.5 rounded-xl text-sm font-medium transition flex items-center gap-2 shadow-md">
+                        <i class="fa-solid fa-paper-plane"></i> สอบถาม
+                    </button>
+                </div>
+                <div id="aiLoading" class="hidden text-center py-6">
+                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-purple-500 border-t-transparent"></div>
+                    <p class="text-xs text-slate-400 mt-2">Gemini กำลังวิเคราะห์และเรียบเรียงคำตอบ...</p>
+                </div>
+                <div id="aiResponseContainer" class="hidden bg-slate-950 border border-slate-800 rounded-xl p-4 text-sm text-slate-300 space-y-3 font-mono">
+                    <!-- Results rendered here -->
+                </div>
+            </div>
+            <div class="p-4 bg-slate-950 border-t border-slate-800 text-right">
+                <button onclick="closeAiModal()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-4 py-2 rounded-xl text-xs transition">ปิดหน้าต่าง</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+
+        function openAiModal() {
+            document.getElementById('aiModal').classList.remove('hidden');
+            document.getElementById('aiPromptInput').focus();
+        }
+
+        function closeAiModal() {
+            document.getElementById('aiModal').classList.add('hidden');
+        }
+
+        async function fetchWithRetry(url, options, retries = 5, delay = 1000) {
+            try {
+                const response = await fetch(url, options);
+                if (!response.ok) {
+                    if (response.status === 429 && retries > 0) {
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                        return fetchWithRetry(url, options, retries - 1, delay * 2);
+                    }
+                    throw new Error(`API Error: ${response.status}`);
+                }
+                return await response.json();
+            } catch (error) {
+                if (retries > 0) {
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    return fetchWithRetry(url, options, retries - 1, delay * 2);
+                }
+                throw error;
+            }
+        }
+
+        async function askGemini() {
+            const promptInput = document.getElementById('aiPromptInput');
+            const userQuery = promptInput.value.trim();
+            if (!userQuery) return;
+
+            const loadingEl = document.getElementById('aiLoading');
+            const responseContainer = document.getElementById('aiResponseContainer');
+            const submitBtn = document.getElementById('aiSubmitBtn');
+
+            loadingEl.classList.remove('hidden');
+            responseContainer.classList.add('hidden');
+            responseContainer.innerHTML = '';
+            submitBtn.disabled = true;
+
+            const systemPrompt = "คุณคือ Senior Computer Systems Architect และ Git/GitHub Expert หน้าที่ของคุณคือให้คำแนะนำ อธิบายคำสั่ง และแนวทางปฏิบัติที่ดีที่สุด (Best Practices) ในการใช้ Git และ GitHub สำหรับ Developer เป็นภาษาไทยที่กระชับ ชัดเจน และเข้าใจง่าย";
+            
+            const apiKey = ""; 
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                }
+            };
+
+            try {
+                const result = await fetchWithRetry(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const candidate = result.candidates?.[0];
+                if (candidate && candidate.content?.parts?.[0]?.text) {
+                    const text = candidate.content.parts[0].text;
+                    responseContainer.innerHTML = `<div class="text-purple-400 font-sans font-bold text-xs uppercase tracking-wider mb-2">คำตอบจาก Gemini AI:</div><div class="whitespace-pre-wrap text-xs font-sans text-slate-200 leading-relaxed">${escapeHtml(text)}</div>`;
+                    responseContainer.classList.remove('hidden');
+                } else {
+                    responseContainer.innerHTML = `<p class="text-red-400 text-xs">ไม่พบคำตอบจากระบบ AI กรุณาลองใหม่อีกครั้ง</p>`;
+                    responseContainer.classList.remove('hidden');
+                }
+            } catch (err) {
+                responseContainer.innerHTML = `<p class="text-red-400 text-xs">เกิดข้อผิดพลาดในการเชื่อมต่อ Gemini API: ${err.message}</p>`;
+                responseContainer.classList.remove('hidden');
+            } finally {
+                loadingEl.classList.add('hidden');
+                submitBtn.disabled = false;
+            }
+        }
+
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+        }
+    </script>
+</body>
+</html>
