@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Windows CMD vs Linux Terminal Handbook (9 Chapters + Network & Data Recovery)</title>
+    <title>Windows CMD vs Linux Terminal Handbook (10 Chapters + Network, Data Recovery & Access Control)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -42,7 +42,7 @@
             </div>
             <div>
                 <h1 class="text-xl font-bold tracking-tight text-white">คู่มือเปรียบเทียบคำสั่ง Windows CMD & Linux Terminal</h1>
-                <p class="text-xs text-slate-400">A3 Presentation Layout • ครบถ้วน 9 หมวดคำสั่งสำคัญ + เน็ตเวิร์ก & กู้ข้อมูล</p>
+                <p class="text-xs text-slate-400">A3 Presentation Layout • ครบถ้วน 10 หมวดคำสั่งสำคัญ + เน็ตเวิร์ก, กู้ข้อมูล & Access Control</p>
             </div>
         </div>
         <div class="flex items-center gap-3 flex-wrap">
@@ -60,11 +60,12 @@
 
     <main class="a3-sheet w-full max-w-[1600px] bg-slate-900 border border-slate-800 rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
         
+        <!-- Header Banner -->
         <div class="border-b border-slate-800 pb-8 mb-8 flex flex-col xl:flex-row justify-between items-start xl:items-end gap-6">
             <div>
-                <span class="bg-purple-500/10 text-purple-400 text-xs font-semibold px-3 py-1 rounded-full border border-purple-500/20 uppercase tracking-widest shadow-sm">Master Edition with 9 Chapters & Network Diagnostics</span>
+                <span class="bg-purple-500/10 text-purple-400 text-xs font-semibold px-3 py-1 rounded-full border border-purple-500/20 uppercase tracking-widest shadow-sm">Master Edition with 10 Chapters & Access Control</span>
                 <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mt-3 text-white">Windows CMD <span class="text-slate-500 font-light">vs</span> Linux Terminal</h2>
-                <p class="text-slate-400 mt-2 text-sm md:text-base max-w-3xl">คู่มืออ้างอิงคำสั่งระบบปฏิบัติการเทียบเคียง (Side-by-Side) ระหว่าง Windows และ Linux ครอบคลุมระบบไฟล์ เครือข่ายเชิงลึก และเทคนิคกู้ข้อมูลฮาร์ดดิสก์</p>
+                <p class="text-slate-400 mt-2 text-sm md:text-base max-w-3xl">คู่มืออ้างอิงคำสั่งระบบปฏิบัติการเทียบเคียง (Side-by-Side) ระหว่าง Windows และ Linux ครอบคลุมระบบไฟล์ เครือข่ายเชิงลึก เทคนิคกู้ข้อมูล และระบบสิทธิ์ล็อกไฟล์ (Access Control)</p>
             </div>
             <div class="flex gap-3 text-sm font-semibold flex-wrap">
                 <div class="bg-sky-500/10 border border-sky-500/30 text-sky-400 px-4 py-2 rounded-xl flex items-center gap-2 shadow-sm">
@@ -79,6 +80,7 @@
             </div>
         </div>
 
+        <!-- Overview Cards -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
             <div class="relative group overflow-hidden bg-gradient-to-br from-slate-900 via-slate-900 to-sky-950/40 border border-sky-500/20 rounded-2xl p-4 shadow-xl">
                 <div class="flex items-center gap-3 mb-2">
@@ -109,14 +111,14 @@
             <div class="relative group overflow-hidden bg-gradient-to-br from-slate-900 via-slate-900 to-purple-950/40 border border-purple-500/20 rounded-2xl p-4 shadow-xl">
                 <div class="flex items-center gap-3 mb-2">
                     <div class="w-9 h-9 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-base shadow-inner">
-                        <i class="fa-solid fa-hard-drive"></i>
+                        <i class="fa-solid fa-shield-halved"></i>
                     </div>
                     <div>
-                        <span class="text-[10px] font-semibold text-purple-400 uppercase tracking-wider">Chapters 08 - 09 & AI</span>
-                        <h4 class="text-xs font-bold text-white">เน็ตเวิร์กเชิงลึก & กู้ข้อมูล</h4>
+                        <span class="text-[10px] font-semibold text-purple-400 uppercase tracking-wider">Chapters 08 - 10 & AI</span>
+                        <h4 class="text-xs font-bold text-white">เน็ตเวิร์ก, กู้ข้อมูล & Access Control</h4>
                     </div>
                 </div>
-                <p class="text-[11px] text-slate-400 leading-relaxed">วินิจฉัยเครือข่ายขั้นสูง, Flush DNS, และ Mount ฮาร์ดดิสก์กู้ไฟล์</p>
+                <p class="text-[11px] text-slate-400 leading-relaxed">Mount ฮาร์ดดิสก์กู้ไฟล์ และระบบล็อกสิทธิ์ป้องกันการลบไฟล์</p>
             </div>
         </div>
 
@@ -391,26 +393,64 @@
                 </div>
             </section>
 
-            <!-- Chapter 6 -->
-            <section class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-6 shadow-inner">
-                <div class="flex items-center gap-3 mb-3">
-                    <span class="bg-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 06</span>
-                    <h3 class="text-sm font-bold text-slate-200">การจัดการสิทธิ์และเจ้าของไฟล์</h3>
+            <!-- Chapter 6: Expanded with Access Control & File Locking Side-by-Side (Windows Left, Linux Right) -->
+            <section class="xl:col-span-2 bg-slate-950/60 border border-slate-800/80 rounded-xl p-6 shadow-inner">
+                <div class="flex items-center justify-between mb-3 flex-wrap gap-2">
+                    <div class="flex items-center gap-3">
+                        <span class="bg-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 06</span>
+                        <h3 class="text-sm font-bold text-slate-200">การจัดการสิทธิ์และระบบล็อกไฟล์ป้องกันการลบ (Permissions & Access Control)</h3>
+                    </div>
+                    <span class="bg-purple-500/10 text-purple-400 text-xs px-2.5 py-0.5 rounded-lg border border-purple-500/30">Side-by-Side Access Control</span>
                 </div>
-                <p class="text-xs text-slate-400 mb-3">ควบคุมสิทธิ์การอ่าน เขียน และรันไฟล์ (เช่น chmod 755)</p>
-                <div class="overflow-x-auto">
+                <p class="text-xs text-slate-400 mb-4">ควบคุมสิทธิ์การเข้าถึง และระบบล็อกไฟล์ป้องกันการลบ (Access Control & File Locking) เปรียบเทียบซ้าย-ขวาตามรูปแบบมาตรฐาน</p>
+                
+                <div class="overflow-x-auto mb-4">
                     <table class="w-full text-left text-sm border-collapse">
                         <thead>
                             <tr class="border-b border-slate-800 text-slate-400 text-xs uppercase tracking-wider">
-                                <th class="py-2 px-2">การทำงาน</th>
-                                <th class="py-2 px-2 text-sky-400">Windows</th>
-                                <th class="py-2 px-2 text-emerald-400">Linux</th>
+                                <th class="py-2 px-3">การทำงาน</th>
+                                <th class="py-2 px-3 text-sky-400">Windows</th>
+                                <th class="py-2 px-3 text-emerald-400">Linux</th>
+                                <th class="py-2 px-3">คำอธิบาย</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-800/50 text-slate-300 text-xs">
-                            <tr><td class="py-2 px-2 font-medium">ดูสิทธิ์ไฟล์</td><td class="py-2 px-2"><code class="text-sky-400 font-bold bg-sky-950/50 px-1 py-0.5 rounded">icacls</code> <span class="text-slate-400">f</span></td><td class="py-2 px-2"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1 py-0.5 rounded">ls <span class="text-amber-300">-l</span></code> <span class="text-slate-400">f</span></td></tr>
-                            <tr><td class="py-2 px-2 font-medium">เปลี่ยนสิทธิ์ (chmod)</td><td class="py-2 px-2"><code class="text-sky-400 font-bold bg-sky-950/50 px-1 py-0.5 rounded">icacls <span class="text-amber-300">/grant</span></code></td><td class="py-2 px-2"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1 py-0.5 rounded">chmod <span class="text-amber-300">755</span></code> <span class="text-slate-400">f</span></td></tr>
-                            <tr><td class="py-2 px-2 font-medium">เปลี่ยนเจ้าของ (chown)</td><td class="py-2 px-2"><code class="text-sky-400 font-bold bg-sky-950/50 px-1 py-0.5 rounded">takeown <span class="text-amber-300">/f</span></code></td><td class="py-2 px-2"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1 py-0.5 rounded">chown</code> <span class="text-slate-400">u:g f</span></td></tr>
+                            <tr>
+                                <td class="py-2.5 px-3 font-medium">ดูสิทธิ์ไฟล์</td>
+                                <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded">icacls</code> <span class="text-slate-400">file</span></td>
+                                <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded">ls <span class="text-amber-300">-l</span></code> <span class="text-slate-400">file</span></td>
+                                <td class="py-2.5 px-3 text-slate-400">แสดงสิทธิ์การเข้าถึงไฟล์และไดเรกทอรี</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2.5 px-3 font-medium">เปลี่ยนสิทธิ์ (chmod)</td>
+                                <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded">icacls <span class="text-amber-300">/grant</span></code></td>
+                                <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded">chmod <span class="text-amber-300">755</span></code> <span class="text-slate-400">file</span></td>
+                                <td class="py-2.5 px-3 text-slate-400">กำหนดสิทธิ์การอ่าน เขียน และรันไฟล์</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2.5 px-3 font-medium">เปลี่ยนเจ้าของ (chown)</td>
+                                <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded">takeown <span class="text-amber-300">/f</span></code> <span class="text-slate-400">file</span></td>
+                                <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded">chown</code> <span class="text-amber-300">u:g</span> <span class="text-slate-400">file</span></td>
+                                <td class="py-2.5 px-3 text-slate-400">โอนย้ายความเป็นเจ้าของไฟล์หรือโฟลเดอร์</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2.5 px-3 font-medium">ยึดสิทธิ์เจ้าของไฟล์</td>
+                                <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded">takeown <span class="text-amber-300">/f /r /d y</span></code> <span class="text-slate-400">file</span></td>
+                                <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded">sudo chown</code> <span class="text-amber-300">root:root</span> <span class="text-slate-400">file</span></td>
+                                <td class="py-2.5 px-3 text-slate-400">ยึดสิทธิ์หรือเปลี่ยนความเป็นเจ้าของให้บัญชีหลัก</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2.5 px-3 font-medium">ล็อกไฟล์ (ปิดสิทธิ์ลบ)</td>
+                                <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded">icacls</code> <span class="text-slate-400">file</span> <code class="text-amber-300">/deny Everyone:(DE,WD)</code></td>
+                                <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded">sudo chmod</code> <span class="text-amber-300">000</span> <span class="text-slate-400">file</span></td>
+                                <td class="py-2.5 px-3 text-slate-400">ปิดสิทธิ์การเขียนและลบป้องกันไม่ให้ไฟล์ถูกลบ</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2.5 px-3 font-medium">ปลดล็อก / คืนค่าเดิม</td>
+                                <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded">icacls</code> <span class="text-slate-400">file</span> <code class="text-amber-300">/reset /T</code></td>
+                                <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded">sudo chmod</code> <span class="text-amber-300">755</span> <span class="text-slate-400">file</span></td>
+                                <td class="py-2.5 px-3 text-slate-400">คืนค่าสิทธิ์การเข้าถึงให้กลับมาใช้งานปกติ (Rollback)</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -434,8 +474,8 @@
                         </thead>
                         <tbody class="divide-y divide-slate-800/50 text-slate-300 text-xs">
                             <tr><td class="py-2 px-2 font-medium">ตรวจสอบ DNS</td><td class="py-2 px-2"><code class="text-sky-400 font-bold bg-sky-950/50 px-1 py-0.5 rounded">nslookup</code></td><td class="py-2 px-2"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1 py-0.5 rounded">dig</code> <span class="text-slate-500">/</span> <code class="text-emerald-400 font-bold bg-emerald-950/50 px-1 py-0.5 rounded">nslookup</code></td></tr>
-                            <tr><td class="py-2 px-2 font-medium">เส้นทางเน็ตเวิร์ก</td><td class="py-2 px-2"><code class="text-sky-400 font-bold bg-sky-950/50 px-1 py-0.5 rounded">tracert</code></td><td class="py-2 px-2"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1 py-0.5 rounded">traceroute</code></td></tr>
-                            <tr><td class="py-2 px-2 font-medium">ตรวจสอบพอร์ต (Ports)</td><td class="py-2 px-2"><code class="text-sky-400 font-bold bg-sky-950/50 px-1 py-0.5 rounded">netstat <span class="text-amber-300">-ano</span></code></td><td class="py-2 px-2"><code class="text-emerald-400 font-bold bg-sky-950/50 px-1 py-0.5 rounded">ss <span class="text-amber-300">-tuln</span></code></td></tr>
+                            <tr><td class="py-2 px-2 font-medium">เส้นทางเน็ตเวิร์ก</td><td class="py-2 px-2"><code class="text-sky-400 font-bold bg-sky-950/50 px-1 py-0.5 rounded">tracert</code></td><td class="py-2 px-2"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded">traceroute</code></td></tr>
+                            <tr><td class="py-2 px-2 font-medium">ตรวจสอบพอร์ต (Ports)</td><td class="py-2 px-2"><code class="text-sky-400 font-bold bg-sky-950/50 px-1 py-0.5 rounded">netstat <span class="text-amber-300">-ano</span></code></td><td class="py-2 px-2"><code class="text-emerald-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded">ss <span class="text-amber-300">-tuln</span></code></td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -450,9 +490,9 @@
                 </div>
                 <span class="bg-emerald-500/10 text-emerald-400 text-xs px-3 py-1 rounded-lg border border-emerald-500/30">IP Ping, Routing, Ports, Flush DNS & DHCP</span>
             </div>
-            <p class="text-xs text-slate-400 mb-6">รวบรวมคำสั่งตรวจสอบระบบเครือข่ายอย่างละเอียด ทั้งการเช็คเกตเวย์ แพ็กเกจลอสด์ การเทสต์พอร์ต และการเคลียร์ DNS Cache</p>
+            <p class="text-xs text-slate-400 mb-6">รวบรวมคำสั่งตรวจสอบระบบเครือข่ายอย่างละเอียด</p>
             
-            <div class="overflow-x-auto mb-4">
+            <div class="overflow-x-auto mb-6">
                 <table class="w-full text-left text-sm border-collapse">
                     <thead>
                         <tr class="border-b border-slate-800 text-slate-400 text-xs uppercase tracking-wider">
@@ -483,14 +523,14 @@
                         </tr>
                         <tr>
                             <td class="py-2.5 px-3 font-medium">เช็คการออกเน็ตภายนอก / DNS</td>
-                            <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">ping <span class="text-slate-400">8.8.8.8</span></code> <span class="text-slate-500">หรือ</span> <code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">ping <span class="text-slate-400">google.com</span></code></td>
+                            <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">ping <span class="text-slate-400">8.8.8.8</span></code></td>
                             <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">ping <span class="text-amber-300">-c 4</span> <span class="text-slate-400">8.8.8.8</span></code></td>
                             <td class="py-2.5 px-3 text-slate-400">ทดสอบว่าออกอินเทอร์เน็ตและแปลงชื่อโดเมนได้หรือไม่</td>
                         </tr>
                         <tr>
                             <td class="py-2.5 px-3 font-medium">เช็คความเสถียร / Packet Loss</td>
                             <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">ping <span class="text-slate-400">8.8.8.8</span> <span class="text-amber-300">-t</span></code></td>
-                            <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">ping <span class="text-slate-400">8.8.8.8</span></code></td>
+                            <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">ping <span class="text-slate-400">8.8.8.8</span></code></td>
                             <td class="py-2.5 px-3 text-slate-400">ปิงต่อเนื่องยาวๆ (กด <code class="text-amber-300">Ctrl+C</code> เพื่อหยุด)</td>
                         </tr>
                         <tr>
@@ -503,7 +543,7 @@
                             <td class="py-2.5 px-3 font-medium">เช็คพอร์ตเฉพาะ (เปิดอยู่ไหม)</td>
                             <td class="py-2.5 px-3"><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">Test-NetConnection <span class="text-slate-400">IP</span> <span class="text-amber-300">-Port 443</span></code></td>
                             <td class="py-2.5 px-3"><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">nc <span class="text-amber-300">-zv</span> <span class="text-slate-400">IP port</span></code></td>
-                            <td class="py-2.5 px-3 text-slate-400">ตรวจสอบว่าบริการปลายทาง (เช่น เว็บ, DB) เปิดพอร์ตรับไหม</td>
+                            <td class="py-2.5 px-3 text-slate-400">ตรวจสอบว่าบริการปลายทางเปิดพอร์ตรับไหม</td>
                         </tr>
                         <tr>
                             <td class="py-2.5 px-3 font-medium">ล้างแคช DNS (Flush DNS)</td>
@@ -582,15 +622,16 @@
                     <i class="fa-solid fa-triangle-exclamation"></i> ข้อควรระวังสำคัญกรณี "กู้ไฟล์" (Data Recovery Best Practices)
                 </div>
                 <ul class="list-disc list-inside space-y-1 text-slate-300">
-                    <li><b>ใช้โหมด Read-Only (<code class="text-amber-300 font-bold">-o ro</code>) เสมอ:</b> ป้องกันไม่ให้ Linux พยายามซ่อมแซมหรือเขียนทับไฟล์ระบบ NTFS ที่เสียหาย ซึ่งจะทำให้อัตราการกู้คืนไฟล์ลดลง</li>
-                    <li><b>ปัญหา Fast Startup / Hibernation ของ Windows:</b> หากฮาร์ดดิสก์ลูกนั้นเคยเปิดโหมด Fast Startup ไว้ Linux อาจฟ้อง Unsafe สามารถแก้ไขด้วยคำสั่ง: <code class="text-emerald-300 font-bold bg-emerald-950/50 px-1 rounded">sudo mount <span class="text-amber-300">-t ntfs-3g -o ro,remove_hiberfile</span> <span class="text-slate-400">/dev/sdb1 /mnt/win_backup</span></code></li>
-                    <li><b>การจัดการสิทธิ์ไฟล์ (Permissions):</b> หากกู้ไฟล์มาแล้วเปิดดูไม่ได้ ให้ปรับสิทธิ์การเข้าถึงด้วย <code class="text-emerald-300 font-bold bg-emerald-950/50 px-1 rounded">sudo chmod <span class="text-amber-300">-R 755</span> <span class="text-slate-400">/mnt/win_backup</span></code></li>
+                    <li><b>ใช้โหมด Read-Only (<code class="text-amber-300 font-bold">-o ro</code>) เสมอ:</b> ป้องกันไม่ให้ Linux พยายามซ่อมแซมหรือเขียนทับไฟล์ระบบ NTFS ที่เสียหาย</li>
+                    <li><b>ปัญหา Fast Startup / Hibernation ของ Windows:</b> แก้ไขด้วยคำสั่ง: <code class="text-emerald-300 font-bold bg-emerald-950/50 px-1 rounded">sudo mount <span class="text-amber-300">-t ntfs-3g -o ro,remove_hiberfile</span> <span class="text-slate-400">/dev/sdb1 /mnt/win_backup</span></code></li>
+                    <li><b>การจัดการสิทธิ์ไฟล์ (Permissions):</b> ปรับสิทธิ์ด้วย <code class="text-emerald-300 font-bold bg-emerald-950/50 px-1 rounded">sudo chmod <span class="text-amber-300">-R 755</span> <span class="text-slate-400">/mnt/win_backup</span></code></li>
                 </ul>
             </div>
         </section>
 
+        <!-- Footer -->
         <div class="border-t border-slate-800 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
-            <p>© Senior Computer Systems Architect & Tech Knowledge Specialist • ครบถ้วน 9 บทเรียนสำคัญพร้อมคำอธิบายภาษาไทยและ Gemini API</p>
+            <p>© Senior Computer Systems Architect & Tech Knowledge Specialist • ครบถ้วน 10 หมวดคำสั่งสำคัญพร้อมคำอธิบายภาษาไทยและ Gemini API</p>
             <p>ออกแบบสำหรับหน้าจอขนาดใหญ่และการพิมพ์ในรูปแบบ A3 Landscape</p>
         </div>
 
@@ -608,7 +649,7 @@
                 </button>
             </div>
             <div class="p-6 overflow-y-auto flex-1 space-y-4">
-                <p class="text-xs text-slate-400">พิมพ์คำสั่งหรือปัญหาเน็ตเวิร์กที่คุณต้องการสอบถาม (เช่น "วิธีเช็คพอร์ตด้วย nc หรือ netstat" หรือ "วิธี flush dns บน ubuntu") เพื่อให้ Gemini วิเคราะห์ทันที:</p>
+                <p class="text-xs text-slate-400">พิมพ์คำสั่งหรือปัญหาที่คุณต้องการสอบถาม (เช่น "วิธีล็อกสิทธิ์ไฟล์ด้วย chmod หรือ icacls" หรือ "วิธี mount ฮาร์ดดิสก์") เพื่อให้ Gemini วิเคราะห์ทันที:</p>
                 <div class="flex gap-2">
                     <input type="text" id="aiPromptInput" placeholder="พิมพ์คำถามหรือโจทย์คำสั่งที่ต้องการ..." class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-purple-500" onkeypress="if(event.key === 'Enter') askGemini()">
                     <button onclick="askGemini()" id="aiSubmitBtn" class="bg-purple-600 hover:bg-purple-500 text-white px-5 py-2.5 rounded-xl text-sm font-medium transition flex items-center gap-2 shadow-md">
