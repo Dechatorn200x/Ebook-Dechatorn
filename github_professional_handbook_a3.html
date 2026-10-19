@@ -80,73 +80,152 @@
         </div>
 
         <!-- Chapters Infographic Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-6 gap-3 mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-7 gap-3 mb-8">
             <div class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-3 text-center">
                 <span class="text-[10px] font-bold text-orange-400">CHAPTER 01</span>
                 <h4 class="text-xs font-semibold text-slate-200 mt-1">Initial Setup</h4>
             </div>
             <div class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-3 text-center">
                 <span class="text-[10px] font-bold text-orange-400">CHAPTER 02</span>
-                <h4 class="text-xs font-semibold text-slate-200 mt-1">Daily Workflow</h4>
+                <h4 class="text-xs font-semibold text-slate-200 mt-1">Repo Setup</h4>
             </div>
             <div class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-3 text-center">
                 <span class="text-[10px] font-bold text-orange-400">CHAPTER 03</span>
-                <h4 class="text-xs font-semibold text-slate-200 mt-1">Branch Strategy</h4>
+                <h4 class="text-xs font-semibold text-slate-200 mt-1">Daily Workflow</h4>
             </div>
             <div class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-3 text-center">
                 <span class="text-[10px] font-bold text-orange-400">CHAPTER 04</span>
-                <h4 class="text-xs font-semibold text-slate-200 mt-1">Deleting Branches</h4>
+                <h4 class="text-xs font-semibold text-slate-200 mt-1">Branch Strategy</h4>
             </div>
             <div class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-3 text-center">
                 <span class="text-[10px] font-bold text-orange-400">CHAPTER 05</span>
+                <h4 class="text-xs font-semibold text-slate-200 mt-1">Deleting Branches</h4>
+            </div>
+            <div class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-3 text-center">
+                <span class="text-[10px] font-bold text-orange-400">CHAPTER 06</span>
                 <h4 class="text-xs font-semibold text-slate-200 mt-1">Merging Code</h4>
             </div>
             <div class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-3 text-center">
-                <span class="text-[10px] font-bold text-purple-400">CHAPTER 06</span>
+                <span class="text-[10px] font-bold text-purple-400">CHAPTER 07</span>
                 <h4 class="text-xs font-semibold text-slate-200 mt-1">Pro Tips & AI</h4>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-8">
-            
-            <!-- Chapter 1 -->
-            <section class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-6 shadow-inner flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center gap-3 mb-3">
-                        <span class="bg-orange-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 01</span>
-                        <h3 class="text-base font-bold text-slate-200">บทนำและการติดตั้งครั้งแรก (Initial Setup & Installation)</h3>
+        <!-- CHAPTER 01: Initial Setup & Installation -->
+        <section class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-6 shadow-inner mb-8">
+            <div class="flex items-center gap-3 mb-3">
+                <span class="bg-orange-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 01</span>
+                <h3 class="text-base font-bold text-slate-200">บทนำและการติดตั้งครั้งแรก (Initial Setup & Installation)</h3>
+            </div>
+            <p class="text-xs text-slate-400 mb-6">เตรียมความพร้อมเครื่องคอมพิวเตอร์และตั้งค่าตัวตนพื้นฐานก่อนเริ่มใช้งาน Git</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
+                    <div class="font-semibold text-orange-300 mb-1">1.1 ติดตั้ง Git บนเครื่องคอมพิวเตอร์</div>
+                    <div class="space-y-1.5 mt-2 font-mono">
+                        <div><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">sudo apt update <span class="text-slate-400">&amp;&amp;</span> sudo apt install <span class="text-amber-300">git</span></code> <span class="text-slate-500 text-[11px] font-sans block mt-0.5">Ubuntu / Debian</span></div>
+                        <div><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">brew install <span class="text-amber-300">git</span></code> <span class="text-slate-500 text-[11px] font-sans block mt-0.5">macOS (Homebrew)</span></div>
                     </div>
-                    <p class="text-xs text-slate-400 mb-4">เตรียมความพร้อมเครื่องคอมพิวเตอร์และตั้งค่าตัวตนพื้นฐานก่อนเริ่มใช้งาน Git</p>
-                    <div class="space-y-3 text-xs">
-                        <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
-                            <div class="font-semibold text-orange-300 mb-1">1.1 ติดตั้ง Git บนเครื่องคอมพิวเตอร์</div>
-                            <div class="space-y-1.5 mt-2 font-mono">
-                                <div><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">sudo apt update <span class="text-slate-400">&amp;&amp;</span> sudo apt install <span class="text-amber-300">git</span></code> <span class="text-slate-500 text-[11px] font-sans block mt-0.5">Ubuntu / Debian</span></div>
-                                <div><code class="text-emerald-400 font-bold bg-emerald-950/50 px-1.5 py-0.5 rounded border border-emerald-500/30">brew install <span class="text-amber-300">git</span></code> <span class="text-slate-500 text-[11px] font-sans block mt-0.5">macOS (Homebrew)</span></div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
+                    <div class="font-semibold text-orange-300 mb-1">1.2 ตั้งค่าบัญชีผู้ใช้ (Identity)</div>
+                    <div class="space-y-1.5 mt-2 font-mono">
+                        <div><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">git config <span class="text-amber-300">--global</span> user.name <span class="text-slate-400">"Your Name"</span></code></div>
+                        <div><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">git config <span class="text-amber-300">--global</span> user.email <span class="text-slate-400">"your.email@example.com"</span></code></div>
+                    </div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
+                    <div class="font-semibold text-orange-300 mb-1">1.3 ตรวจสอบการตั้งค่า</div>
+                    <div class="mt-2 font-mono">
+                        <div><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">git config <span class="text-amber-300">--list</span></code></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 02: Repository Initialization & Setup -->
+        <section class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-6 shadow-inner mb-8">
+            <div class="flex items-center gap-3 mb-3">
+                <span class="bg-orange-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 02</span>
+                <h3 class="text-base font-bold text-slate-200">การเริ่มต้นสร้างและเชื่อมต่อ Repository (Repository Initialization & Setup)</h3>
+            </div>
+            <p class="text-xs text-slate-400 mb-6">คู่มือการตั้งค่าโปรเจกต์และการเชื่อมต่อ Git กับ GitHub ทั้ง 2 วิธีหลัก (ผ่านหน้าเว็บไซต์ และผ่าน Terminal ด้วย GitHub CLI) รวมถึงการโคลนโปรเจกต์เมื่อย้ายเครื่อง</p>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Case 1 -->
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl flex flex-col justify-between">
+                    <div>
+                        <div class="font-bold text-orange-300 text-xs mb-1">กรณีที่ 1: สร้างบนเว็บไซต์ GitHub ก่อน แล้วเชื่อมต่อจากในเครื่อง</div>
+                        <p class="text-[11px] text-slate-400 mb-3">วิธีมาตรฐาน สร้างเรโปบนเว็บเบราว์เซอร์ก่อน แล้วนำลิงก์มาผูกกับโปรเจกต์เดิม</p>
+                        <div class="space-y-2 text-[11px] font-mono">
+                            <div><span class="text-slate-500 font-sans block text-[10px]">1.1 สร้าง New Repo บนเว็บ (ไม่ต้องติ๊กเลือก README)</span></div>
+                            <div><span class="text-slate-500 font-sans block text-[10px]">1.2 เข้าสู่โฟลเดอร์โปรเจกต์:</span>
+                                <code class="text-sky-400 bg-sky-950/50 px-1 py-0.5 rounded block mt-1">cd ~/Desktop/Books/"Ebook - Dechatorn"</code>
                             </div>
-                        </div>
-                        <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
-                            <div class="font-semibold text-orange-300 mb-1">1.2 ตั้งค่าบัญชีผู้ใช้ (Identity)</div>
-                            <div class="space-y-1.5 mt-2 font-mono">
-                                <div><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">git config <span class="text-amber-300">--global</span> user.name <span class="text-slate-400">"Your Name"</span></code></div>
-                                <div><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">git config <span class="text-amber-300">--global</span> user.email <span class="text-slate-400">"your.email@example.com"</span></code></div>
+                            <div><span class="text-slate-500 font-sans block text-[10px]">1.3 เปิดใช้ Git และผูก Remote:</span>
+                                <code class="text-sky-400 bg-sky-950/50 px-1 py-0.5 rounded block mt-1">git init</code>
+                                <code class="text-sky-400 bg-sky-950/50 px-1 py-0.5 rounded block mt-1">git remote add origin https://github.com/Dechatorn200x/Ebook---Dechatorn.git</code>
                             </div>
-                        </div>
-                        <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
-                            <div class="font-semibold text-orange-300 mb-1">1.3 ตรวจสอบการตั้งค่า</div>
-                            <div class="mt-2 font-mono">
-                                <div><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">git config <span class="text-amber-300">--list</span></code></div>
+                            <div><span class="text-slate-500 font-sans block text-[10px]">1.4 ดึงข้อมูลตั้งต้น (กรณีมี .gitignore บนเว็บ):</span>
+                                <code class="text-sky-400 bg-sky-950/50 px-1 py-0.5 rounded block mt-1">git pull origin main --allow-unrelated-histories</code>
+                                <span class="text-amber-300 font-sans block text-[10px] mt-0.5">Note: หาก Editor เด้งให้กด Esc ตามด้วยพิมพ์ :wq แล้ว Enter</span>
+                            </div>
+                            <div><span class="text-slate-500 font-sans block text-[10px]">1.5 บันทึกและส่งโค้ด:</span>
+                                <code class="text-sky-400 bg-sky-950/50 px-1 py-0.5 rounded block mt-1">git add .</code>
+                                <code class="text-sky-400 bg-sky-950/50 px-1 py-0.5 rounded block mt-1">git commit -m "Initial commit ebook files"</code>
+                                <code class="text-sky-400 bg-sky-950/50 px-1 py-0.5 rounded block mt-1">git push -u origin main</code>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
 
-            <!-- Chapter 2 -->
+                <!-- Case 2 -->
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl flex flex-col justify-between">
+                    <div>
+                        <div class="font-bold text-orange-300 text-xs mb-1">กรณีที่ 2: สร้างและเชื่อมต่อผ่าน Terminal (ด้วย GitHub CLI)</div>
+                        <p class="text-[11px] text-slate-400 mb-3">วิธีสะดวกรวดเร็วโดยไม่ต้องสลับไปหน้าเว็บ สร้างเรโปและดันขึ้นคลาวด์ได้ทันที</p>
+                        <div class="space-y-2 text-[11px] font-mono">
+                            <div><span class="text-slate-500 font-sans block text-[10px]">2.1 เข้าสู่โฟลเดอร์โปรเจกต์:</span>
+                                <code class="text-sky-400 bg-sky-950/50 px-1 py-0.5 rounded block mt-1">cd ~/Desktop/Books/"Ebook - Dechatorn"</code>
+                            </div>
+                            <div><span class="text-slate-500 font-sans block text-[10px]">2.2 ล็อกอิน GitHub (ทำครั้งแรกครั้งเดียว):</span>
+                                <code class="text-sky-400 bg-sky-950/50 px-1 py-0.5 rounded block mt-1">gh auth login</code>
+                            </div>
+                            <div><span class="text-slate-500 font-sans block text-[10px]">2.3 สร้างเรโปใหม่และ Push ทันที:</span>
+                                <code class="text-sky-400 bg-sky-950/50 px-1 py-0.5 rounded block mt-1">gh repo create Ebook---Dechatorn --public --source=. --push</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 3: Cloning on new machine -->
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl flex flex-col justify-between">
+                    <div>
+                        <div class="font-bold text-indigo-300 text-xs mb-1">กรณีที่ 3: โคลนโปรเจกต์เดิมลงเครื่องใหม่ (Clone Repository)</div>
+                        <p class="text-[11px] text-slate-400 mb-3">วิธีดึงโค้ดทั้งหมดลงมาทำงานต่อเมื่อย้ายเครื่องคอมพิวเตอร์ใหม่ โดยใช้บัญชีเดิม</p>
+                        <div class="space-y-2 text-[11px] font-mono">
+                            <div><span class="text-slate-500 font-sans block text-[10px]">3.1 ย้ายไปโฟลเดอร์ที่ต้องการเก็บงาน:</span>
+                                <code class="text-indigo-400 bg-indigo-950/50 px-1 py-0.5 rounded block mt-1">cd ~/Desktop/Projects</code>
+                            </div>
+                            <div><span class="text-slate-500 font-sans block text-[10px]">3.2 โคลนโปรเจกต์ผ่าน HTTPS หรือ GitHub CLI:</span>
+                                <code class="text-indigo-400 bg-indigo-950/50 px-1 py-0.5 rounded block mt-1">git clone https://github.com/Dechatorn200x/Ebook---Dechatorn.git</code>
+                                <span class="text-slate-500 font-sans block text-[9px] mt-0.5">หรือใช้ GH CLI:</span>
+                                <code class="text-indigo-400 bg-indigo-950/50 px-1 py-0.5 rounded block mt-0.5">gh repo clone Dechatorn200x/Ebook---Dechatorn</code>
+                            </div>
+                            <div><span class="text-slate-500 font-sans block text-[10px]">3.3 เข้าไปในโฟลเดอร์เพื่อเริ่มทำงานต่อ:</span>
+                                <code class="text-indigo-400 bg-indigo-950/50 px-1 py-0.5 rounded block mt-1">cd Ebook---Dechatorn</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-8">
+            <!-- Chapter 3 -->
             <section class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-6 shadow-inner flex flex-col justify-between">
                 <div>
                     <div class="flex items-center gap-3 mb-3">
-                        <span class="bg-orange-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 02</span>
+                        <span class="bg-orange-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 03</span>
                         <h3 class="text-base font-bold text-slate-200">วงจรการทำงานประจำวัน (Daily Git Workflow)</h3>
                     </div>
                     <p class="text-xs text-slate-400 mb-4">ลำดับขั้นตอนพื้นฐานในการเช็คสถานะ บันทึกงาน และส่งขึ้นคลาวด์</p>
@@ -169,15 +248,12 @@
                     </div>
                 </div>
             </section>
-        </div>
 
-        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-8">
-            
-            <!-- Chapter 3 -->
+            <!-- Chapter 4 -->
             <section class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-6 shadow-inner flex flex-col justify-between">
                 <div>
                     <div class="flex items-center gap-3 mb-3">
-                        <span class="bg-orange-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 03</span>
+                        <span class="bg-orange-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 04</span>
                         <h3 class="text-base font-bold text-slate-200">การจัดการ Branch สำหรับพัฒนาฟีเจอร์ใหม่</h3>
                     </div>
                     <p class="text-xs text-slate-400 mb-4">เทคนิคการแยกกิ่งงานเพื่อไม่ให้กระทบกับโค้ดหลักบน main และการ Push ขึ้น GitHub ครั้งแรก</p>
@@ -198,32 +274,6 @@
                     </div>
                 </div>
             </section>
-
-            <!-- Chapter 4: Deleting Branches (NEW) -->
-            <section class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-6 shadow-inner flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center gap-3 mb-3">
-                        <span class="bg-orange-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 04</span>
-                        <h3 class="text-base font-bold text-slate-200">การลบกิ่ง (Deleting Branches) ทั้งแบบ Local และ Remote</h3>
-                    </div>
-                    <p class="text-xs text-slate-400 mb-4">หลังจากรวมกิ่ง (Merge) เข้าสู่ main เรียบร้อยแล้ว ควรลบกิ่งฟีเจอร์ที่ไม่ใช้แล้วทิ้งเพื่อความสะอาดของโปรเจกต์</p>
-                    <div class="space-y-3 text-xs">
-                        <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
-                            <div class="font-semibold text-orange-300 mb-1">4.1 ลบกิ่งในเครื่องคอมพิวเตอร์ (Local Branch)</div>
-                            <div class="space-y-1.5 mt-2 font-mono">
-                                <div><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">git branch <span class="text-amber-300">-d</span> <span class="text-slate-400">ชื่อกิ่ง</span></code> <span class="text-slate-500 font-sans text-[11px] block mt-0.5">ลบปกติ (ต้องผ่านการ merge แล้วเท่านั้น)</span></div>
-                                <div><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">git branch <span class="text-amber-300">-D</span> <span class="text-slate-400">ชื่อกิ่ง</span></code> <span class="text-slate-500 font-sans text-[11px] block mt-0.5">บังคับลบ (กรณีไม่ได้ merge แต่ต้องการลบทิ้งทันที)</span></div>
-                            </div>
-                        </div>
-                        <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
-                            <div class="font-semibold text-orange-300 mb-1">4.2 ลบกิ่งบนคลาวด์ GitHub (Remote Branch)</div>
-                            <div class="mt-2 font-mono">
-                                <div><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">git push origin <span class="text-amber-300">--delete</span> <span class="text-slate-400">ชื่อกิ่ง</span></code></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
         </div>
 
         <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-8">
@@ -233,6 +283,32 @@
                 <div>
                     <div class="flex items-center gap-3 mb-3">
                         <span class="bg-orange-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 05</span>
+                        <h3 class="text-base font-bold text-slate-200">การลบกิ่ง (Deleting Branches) ทั้งแบบ Local และ Remote</h3>
+                    </div>
+                    <p class="text-xs text-slate-400 mb-4">หลังจากรวมกิ่ง (Merge) เข้าสู่ main เรียบร้อยแล้ว ควรลบกิ่งฟีเจอร์ที่ไม่ใช้แล้วทิ้งเพื่อความสะอาดของโปรเจกต์</p>
+                    <div class="space-y-3 text-xs">
+                        <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
+                            <div class="font-semibold text-orange-300 mb-1">5.1 ลบกิ่งในเครื่องคอมพิวเตอร์ (Local Branch)</div>
+                            <div class="space-y-1.5 mt-2 font-mono">
+                                <div><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">git branch <span class="text-amber-300">-d</span> <span class="text-slate-400">ชื่อกิ่ง</span></code> <span class="text-slate-500 font-sans text-[11px] block mt-0.5">ลบปกติ (ต้องผ่านการ merge แล้วเท่านั้น)</span></div>
+                                <div><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">git branch <span class="text-amber-300">-D</span> <span class="text-slate-400">ชื่อกิ่ง</span></code> <span class="text-slate-500 font-sans text-[11px] block mt-0.5">บังคับลบ (กรณีไม่ได้ merge แต่ต้องการลบทิ้งทันที)</span></div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
+                            <div class="font-semibold text-orange-300 mb-1">5.2 ลบกิ่งบนคลาวด์ GitHub (Remote Branch)</div>
+                            <div class="mt-2 font-mono">
+                                <div><code class="text-sky-400 font-bold bg-sky-950/50 px-1.5 py-0.5 rounded border border-sky-500/30">git push origin <span class="text-amber-300">--delete</span> <span class="text-slate-400">ชื่อกิ่ง</span></code></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chapter 6 -->
+            <section class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-6 shadow-inner flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="bg-orange-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 06</span>
                         <h3 class="text-base font-bold text-slate-200">การรวมกิ่ง (Merging)</h3>
                     </div>
                     <p class="text-xs text-slate-400 mb-4">ขั้นตอนการดึงโค้ดล่าสุดจาก main มารวมกับฟีเจอร์ที่เราทำเสร็จแล้ว</p>
@@ -259,39 +335,37 @@
                     </div>
                 </div>
             </section>
+        </div>
 
-            <!-- Chapter 6 -->
-            <section class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-6 shadow-inner flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center gap-3 mb-3">
-                        <span class="bg-purple-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 06</span>
-                        <h3 class="text-base font-bold text-slate-200">คำสั่งเสริมที่มีประโยชน์และ Pro Tips</h3>
-                    </div>
-                    <p class="text-xs text-slate-400 mb-4">เทคนิคและคำสั่งฉุกเฉินในการแก้ไขสถานการณ์เฉพาะหน้า</p>
-                    <div class="space-y-3 text-xs">
-                        <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
-                            <div class="font-semibold text-purple-300 mb-1">การยกเลิกการเปลี่ยนแปลงทั้งหมด (Hard Reset & Clean)</div>
-                            <div class="font-mono space-y-1 mt-1">
-                                <div><code class="text-sky-300 font-bold bg-sky-950/50 px-1 py-0.5 rounded text-[11px]">git reset <span class="text-amber-300">--hard</span> HEAD</code></div>
-                                <div><code class="text-sky-300 font-bold bg-sky-950/50 px-1 py-0.5 rounded text-[11px]">git clean <span class="text-amber-300">-fd</span></code></div>
-                            </div>
-                        </div>
-                        <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
-                            <div class="font-semibold text-purple-300 mb-1">ดูประวัติแบบกราฟย่อ</div>
-                            <div class="font-mono mt-1">
-                                <code class="text-sky-300 font-bold bg-sky-950/50 px-1 py-0.5 rounded text-[11px]">git log <span class="text-amber-300">--oneline --graph --all</span></code>
-                            </div>
-                        </div>
-                        <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
-                            <div class="font-semibold text-purple-300 mb-1">แก้ไขข้อความ Commit ล่าสุด</div>
-                            <div class="font-mono mt-1">
-                                <code class="text-sky-300 font-bold bg-sky-950/50 px-1 py-0.5 rounded text-[11px]">git commit <span class="text-amber-300">--amend</span> -m <span class="text-slate-400">"ข้อความใหม่"</span></code>
-                            </div>
-                        </div>
+        <!-- Chapter 7 -->
+        <section class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-6 shadow-inner mb-8">
+            <div class="flex items-center gap-3 mb-3">
+                <span class="bg-purple-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 07</span>
+                <h3 class="text-base font-bold text-slate-200">คำสั่งเสริมที่มีประโยชน์และ Pro Tips</h3>
+            </div>
+            <p class="text-xs text-slate-400 mb-4">เทคนิคและคำสั่งฉุกเฉินในการแก้ไขสถานการณ์เฉพาะหน้า</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
+                    <div class="font-semibold text-purple-300 mb-1">การยกเลิกการเปลี่ยนแปลงทั้งหมด (Hard Reset & Clean)</div>
+                    <div class="font-mono space-y-1 mt-1">
+                        <div><code class="text-sky-300 font-bold bg-sky-950/50 px-1 py-0.5 rounded text-[11px]">git reset <span class="text-amber-300">--hard</span> HEAD</code></div>
+                        <div><code class="text-sky-300 font-bold bg-sky-950/50 px-1 py-0.5 rounded text-[11px]">git clean <span class="text-amber-300">-fd</span></code></div>
                     </div>
                 </div>
-            </section>
-        </div>
+                <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
+                    <div class="font-semibold text-purple-300 mb-1">ดูประวัติแบบกราฟย่อ</div>
+                    <div class="font-mono mt-1">
+                        <code class="text-sky-300 font-bold bg-sky-950/50 px-1 py-0.5 rounded text-[11px]">git log <span class="text-amber-300">--oneline --graph --all</span></code>
+                    </div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 p-3 rounded-lg">
+                    <div class="font-semibold text-purple-300 mb-1">แก้ไขข้อความ Commit ล่าสุด</div>
+                    <div class="font-mono mt-1">
+                        <code class="text-sky-300 font-bold bg-sky-950/50 px-1 py-0.5 rounded text-[11px]">git commit <span class="text-amber-300">--amend</span> -m <span class="text-slate-400">"ข้อความใหม่"</span></code>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <div class="border-t border-slate-800 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
             <p>© Senior Computer Systems Architect & Tech Knowledge Specialist • คู่มือ Git & GitHub ฉบับสมบูรณ์พร้อมระบบผู้ช่วย Gemini AI</p>
