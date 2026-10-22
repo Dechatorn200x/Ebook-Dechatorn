@@ -64,7 +64,7 @@
             <div>
                 <span class="bg-orange-500/10 text-orange-400 text-xs font-semibold px-3 py-1 rounded-full border border-orange-500/20 uppercase tracking-widest shadow-sm">Complete Developer Edition</span>
                 <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mt-3 text-white">Git & GitHub <span class="text-slate-500 font-light">Handbook</span></h2>
-                <p class="text-slate-400 mt-2 text-sm md:text-base max-w-3xl">นักพัฒนาและผู้เริ่มต้นใช้งาน ที่ต้องการเรียนรู้ระบบ Version Control ตั้งแต่พื้นฐานการติดตั้ง จนถึงขั้นตอนนี้การจัดการ Branch, การลบกิ่ง และ Workflow การทำงานจริง</p>
+                <p class="text-slate-400 mt-2 text-sm md:text-base max-w-3xl">คู่มืออ้างอิงสำหรับนักพัฒนาและผู้เริ่มต้นใช้งาน ที่ต้องการเรียนรู้ระบบ Version Control ตั้งแต่พื้นฐานการติดตั้ง จนถึงขั้นตอนการจัดการ Branch, การลบกิ่ง และ Workflow การทำงานจริง</p>
             </div>
             <div class="flex gap-3 text-sm font-semibold flex-wrap">
                 <div class="bg-orange-500/10 border border-orange-500/30 text-orange-400 px-4 py-2 rounded-xl flex items-center gap-2 shadow-sm">
@@ -146,33 +146,75 @@
         <section class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-6 shadow-inner mb-8">
             <div class="flex items-center gap-3 mb-3">
                 <span class="bg-orange-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm">CH 02</span>
-                <h3 class="text-base font-bold text-slate-200">การเริ่มต้นสร้างและเชื่อมต่อ Repository (Repository Initialization & Setup)</h3>
+                <h3 class="text-base font-bold text-slate-200">การเริ่มต้นและเชื่อมต่อ Repository (Repository Initialization & Setup)</h3>
             </div>
-            <p class="text-xs text-slate-400 mb-6">คู่มือการตั้งค่าโปรเจกต์และการเชื่อมต่อ Git กับ GitHub ทั้ง 2 วิธีหลัก (ผ่านหน้าเว็บไซต์ และผ่าน Terminal ด้วย GitHub CLI) รวมถึงการโคลนโปรเจกต์เมื่อย้ายเครื่อง</p>
+            <p class="text-xs text-slate-400 mb-6">คู่มือการตั้งค่าโปรเจกต์และการเชื่อมต่อ Git กับ GitHub ทั้ง 3 กรณีหลัก พร้อมขั้นตอนอย่างเป็นระบบ</p>
             
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <!-- Case 1 -->
                 <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl flex flex-col justify-between">
                     <div>
-                        <div class="font-bold text-orange-300 text-xs mb-1">กรณีที่ 1: สร้างบนเว็บไซต์ GitHub ก่อน แล้วเชื่อมต่อจากในเครื่อง</div>
-                        <p class="text-[11px] text-slate-400 mb-3">วิธีมาตรฐาน สร้างเรโปบนเว็บเบราว์เซอร์ก่อน แล้วนำลิงก์มาผูกกับโปรเจกต์เดิม</p>
-                        <div class="space-y-2 text-[11px] font-mono">
-                            <div><span class="text-slate-500 font-sans block text-[10px]">1.1 สร้าง New Repo บนเว็บ (ไม่ต้องติ๊กเลือก README)</span></div>
-                            <div><span class="text-slate-500 font-sans block text-[10px]">1.2 เข้าสู่โฟลเดอร์โปรเจกต์:</span>
-                                <code class="text-sky-400 bg-sky-950/50 px-1 py-0.5 rounded block mt-1">cd ~/Desktop/Books/"Ebook - Dechatorn"</code>
+                        <div class="font-bold text-orange-300 text-xs mb-1">กรณีที่ 1: สร้าง Repository บนเว็บไซต์ GitHub ก่อน แล้วเชื่อมต่อจากในเครื่อง</div>
+                        <p class="text-[11px] text-slate-400 mb-3">วิธีมาตรฐานสำหรับผู้เริ่มต้น โดยสร้างเรโปบนเว็บเบราว์เซอร์ก่อน แล้วนำลิงก์มาผูกกับโปรเจกต์เดิมในเครื่อง</p>
+                        
+                        <div class="space-y-3 text-[11px] font-sans">
+                            <!-- 1.1 -->
+                            <div>
+                                <span class="text-orange-400 font-semibold block text-[11px]">1.1 สร้าง Repository บนเว็บไซต์ GitHub</span>
+                                <span class="text-slate-300 block text-[10px] mt-0.5">ไปที่เว็บไซต์ GitHub กดสร้าง New Repository ตั้งชื่อโปรเจกต์ (โดยไม่ต้องติ๊กเลือก Add a README file)</span>
                             </div>
-                            <div><span class="text-slate-500 font-sans block text-[10px]">1.3 เปิดใช้ Git และผูก Remote:</span>
-                                <code class="text-sky-400 bg-sky-950/50 px-1 py-0.5 rounded block mt-1">git init</code>
-                                <code class="text-sky-400 bg-sky-950/50 px-1 py-0.5 rounded block mt-1">git remote add origin https://github.com/Dechatorn200x/Ebook---Dechatorn.git</code>
+
+                            <!-- 1.2 -->
+                            <div>
+                                <span class="text-orange-400 font-semibold block text-[11px]">1.2 เข้าสู่โฟลเดอร์โปรเจกต์ในเครื่อง</span>
+                                <code class="text-sky-400 font-mono bg-sky-950/50 px-1.5 py-0.5 rounded block mt-1">cd /เส้นทาง/ไปยัง/โฟลเดอร์โปรเจกต์/ชื่อโฟลเดอร์งาน</code>
+                                <span class="text-slate-400 text-[10px] block mt-0.5">ย้ายตำแหน่ง Directory ไปยังโฟลเดอร์งานที่ต้องการ (ตัวอย่างเช่น: <code class="text-slate-300 font-mono">cd ~/Desktop/Projects/My-Project</code>)</span>
                             </div>
-                            <div><span class="text-slate-500 font-sans block text-[10px]">1.4 ดึงข้อมูลตั้งต้น (กรณีมี .gitignore บนเว็บ):</span>
-                                <code class="text-sky-400 bg-sky-950/50 px-1 py-0.5 rounded block mt-1">git pull origin main --allow-unrelated-histories</code>
-                                <span class="text-amber-300 font-sans block text-[10px] mt-0.5">Note: หาก Editor เด้งให้กด Esc ตามด้วยพิมพ์ :wq แล้ว Enter</span>
+
+                            <!-- 1.3 -->
+                            <div>
+                                <span class="text-orange-400 font-semibold block text-[11px]">1.3 เริ่มต้นใช้งาน Git และผูก Remote</span>
+                                <div class="font-mono mt-1 space-y-1">
+                                    <code class="text-sky-400 bg-sky-950/50 px-1.5 py-0.5 rounded block">git init</code>
+                                    <span class="text-slate-400 text-[10px] font-sans block">เปิดใช้งานระบบ Version Control ในโฟลเดอร์ปัจจุบัน</span>
+                                    
+                                    <code class="text-sky-400 bg-sky-950/50 px-1.5 py-0.5 rounded block mt-1">git remote add origin https://github.com/username/repository-name.git</code>
+                                    <span class="text-slate-400 text-[10px] font-sans block">ผูกลิงก์รีโมทเข้ากับ URL ของ GitHub ที่สร้างไว้</span>
+                                </div>
                             </div>
-                            <div><span class="text-slate-500 font-sans block text-[10px]">1.5 บันทึกและส่งโค้ด:</span>
-                                <code class="text-sky-400 bg-sky-950/50 px-1 py-0.5 rounded block mt-1">git add .</code>
-                                <code class="text-sky-400 bg-sky-950/50 px-1 py-0.5 rounded block mt-1">git commit -m "Initial commit ebook files"</code>
-                                <code class="text-sky-400 bg-sky-950/50 px-1 py-0.5 rounded block mt-1">git push -u origin main</code>
+
+                            <!-- 1.4 -->
+                            <div>
+                                <span class="text-orange-400 font-semibold block text-[11px]">1.4 จัดการกรณีบนเว็บมีไฟล์ตั้งต้น (เช่น .gitignore หรือ README)</span>
+                                <span class="text-slate-300 block text-[10px] mt-0.5">เลือกใช้คำสั่งตามสถานะของรีโมทบนเว็บ:</span>
+                                
+                                <div class="bg-slate-950/80 p-2 rounded border border-slate-800 mt-1 space-y-1.5">
+                                    <div>
+                                        <span class="text-amber-300 text-[10px] font-medium block">• หากบนเว็บมีไฟล์ตั้งต้นอยู่แล้ว:</span>
+                                        <code class="text-sky-400 font-mono bg-sky-950/50 px-1 py-0.5 rounded block mt-0.5">git pull origin main --allow-unrelated-histories</code>
+                                        <span class="text-slate-400 text-[9.5px] block mt-0.5">ดึงข้อมูลตั้งต้นมาผสานกรณีที่ประวัติเริ่มต้นแยกกัน</span>
+                                        <span class="text-amber-400/90 text-[9.5px] block italic mt-0.5">Note: หากมีหน้าต่าง Editor เด้งขึ้นมา ให้กด Esc ตามด้วยพิมพ์ :wq แล้วกด Enter เพื่อบันทึก</span>
+                                    </div>
+                                    <div class="border-t border-slate-800/80 pt-1">
+                                        <span class="text-emerald-400 text-[10px] font-medium block">• หากบนเว็บยังว่างเปล่าไม่มีไฟล์ใดๆ เลย:</span>
+                                        <span class="text-slate-400 text-[9.5px] block">(ข้ามขั้นตอน pull แล้วไปข้อ 1.5 ทันที)</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 1.5 -->
+                            <div>
+                                <span class="text-orange-400 font-semibold block text-[11px]">1.5 บันทึกและส่งโค้ดขึ้น GitHub เป็นครั้งแรก</span>
+                                <div class="font-mono mt-1 space-y-1">
+                                    <code class="text-sky-400 bg-sky-950/50 px-1.5 py-0.5 rounded block">git add .</code>
+                                    <span class="text-slate-400 text-[10px] font-sans block">เลือกไฟล์ทั้งหมดเข้าสู่ Staging Area</span>
+
+                                    <code class="text-sky-400 bg-sky-950/50 px-1.5 py-0.5 rounded block mt-1">git commit -m "Initial commit project files"</code>
+                                    <span class="text-slate-400 text-[10px] font-sans block">บันทึกประวัติเวอร์ชันแรกพร้อมข้อความอธิบาย</span>
+
+                                    <code class="text-sky-400 bg-sky-950/50 px-1.5 py-0.5 rounded block mt-1">git push -u origin main</code>
+                                    <span class="text-slate-400 text-[10px] font-sans block">ส่งโค้ดขึ้นกิ่ง main บน GitHub พร้อมจำค่าต้นทางสำหรับการใช้งานรอบถัดไป</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -182,37 +224,93 @@
                 <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl flex flex-col justify-between">
                     <div>
                         <div class="font-bold text-orange-300 text-xs mb-1">กรณีที่ 2: สร้างและเชื่อมต่อผ่าน Terminal (ด้วย GitHub CLI)</div>
-                        <p class="text-[11px] text-slate-400 mb-3">วิธีสะดวกรวดเร็วโดยไม่ต้องสลับไปหน้าเว็บ สร้างเรโปและดันขึ้นคลาวด์ได้ทันที</p>
-                        <div class="space-y-2 text-[11px] font-mono">
-                            <div><span class="text-slate-500 font-sans block text-[10px]">2.1 เข้าสู่โฟลเดอร์โปรเจกต์:</span>
-                                <code class="text-sky-400 bg-sky-950/50 px-1 py-0.5 rounded block mt-1">cd ~/Desktop/Books/"Ebook - Dechatorn"</code>
+                        <p class="text-[11px] text-slate-400 mb-3">วิธีสะดวกรวดเร็วสำหรับ Developer โดยสร้างเรโปและเชื่อมคลาวด์ได้ทันทีผ่านบรรทัดคำสั่ง</p>
+                        
+                        <div class="space-y-3 text-[11px] font-sans">
+                            <!-- 2.1 -->
+                            <div>
+                                <span class="text-orange-400 font-semibold block text-[11px]">2.1 เข้าสู่โฟลเดอร์โปรเจกต์ในเครื่อง</span>
+                                <code class="text-sky-400 font-mono bg-sky-950/50 px-1.5 py-0.5 rounded block mt-1">cd /เส้นทาง/ไปยัง/โฟลเดอร์โปรเจกต์/ชื่อโฟลเดอร์งาน</code>
+                                <span class="text-slate-400 text-[10px] block mt-0.5">ย้ายตำแหน่ง Directory ไปยังโฟลเดอร์โปรเจกต์ที่ต้องการสร้าง</span>
                             </div>
-                            <div><span class="text-slate-500 font-sans block text-[10px]">2.2 ล็อกอิน GitHub (ทำครั้งแรกครั้งเดียว):</span>
-                                <code class="text-sky-400 bg-sky-950/50 px-1 py-0.5 rounded block mt-1">gh auth login</code>
+
+                            <!-- 2.2 -->
+                            <div>
+                                <span class="text-orange-400 font-semibold block text-[11px]">2.2 ยืนยันตัวตนกับ GitHub CLI (ทำเฉพาะครั้งแรก)</span>
+                                <code class="text-sky-400 font-mono bg-sky-950/50 px-1.5 py-0.5 rounded block mt-1">gh auth login</code>
+                                <span class="text-slate-400 text-[10px] block mt-0.5">เลือกยืนยันตัวตนผ่านเว็บเบราว์เซอร์หรือใช้ Personal Access Token</span>
                             </div>
-                            <div><span class="text-slate-500 font-sans block text-[10px]">2.3 สร้างเรโปใหม่และ Push ทันที:</span>
-                                <code class="text-sky-400 bg-sky-950/50 px-1 py-0.5 rounded block mt-1">gh repo create Ebook---Dechatorn --public --source=. --push</code>
+
+                            <!-- 2.3 -->
+                            <div>
+                                <span class="text-orange-400 font-semibold block text-[11px]">2.3 สร้าง Repository บน GitHub และอัปโหลดโค้ดทันที</span>
+                                <code class="text-sky-400 font-mono bg-sky-950/50 px-1.5 py-0.5 rounded block mt-1">gh repo create project-name --public --source=. --remote=origin --push</code>
+                                <div class="bg-slate-950/80 p-2 rounded border border-slate-800 mt-1 space-y-1 text-[9.5px] text-slate-300">
+                                    <div>• <code class="text-amber-300">--public</code> : กำหนดสิทธิ์ให้ Repository เป็นสาธารณะ (หรือใช้ <code class="text-amber-300">--private</code>)</div>
+                                    <div>• <code class="text-amber-300">--source=.</code> : ระบุให้ใช้โฟลเดอร์ปัจจุบันเป็นซอร์สโค้ด</div>
+                                    <div>• <code class="text-amber-300">--remote=origin</code> : ตั้งชื่อรีโมทเป็น origin โดยอัตโนมัติ</div>
+                                    <div>• <code class="text-amber-300">--push</code> : ทำการ Push ไฟล์ทั้งหมดขึ้น GitHub ทันทีหลังสร้างเสร็จ</div>
+                                </div>
+                            </div>
+
+                            <!-- 2.4 -->
+                            <div>
+                                <span class="text-orange-400 font-semibold block text-[11px]">2.4 ตรวจสอบสถานะการเชื่อมต่อ</span>
+                                <code class="text-sky-400 font-mono bg-sky-950/50 px-1.5 py-0.5 rounded block mt-1">gh repo view --web</code>
+                                <span class="text-slate-400 text-[10px] block mt-0.5">เปิดหน้าเบราว์เซอร์เพื่อตรวจสอบ Repository บน GitHub ทันที</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Case 3: Cloning on new machine -->
+                <!-- Case 3 -->
                 <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl flex flex-col justify-between">
                     <div>
                         <div class="font-bold text-indigo-300 text-xs mb-1">กรณีที่ 3: โคลนโปรเจกต์เดิมลงเครื่องใหม่ (Clone Repository)</div>
-                        <p class="text-[11px] text-slate-400 mb-3">วิธีดึงโค้ดทั้งหมดลงมาทำงานต่อเมื่อย้ายเครื่องคอมพิวเตอร์ใหม่ โดยใช้บัญชีเดิม</p>
-                        <div class="space-y-2 text-[11px] font-mono">
-                            <div><span class="text-slate-500 font-sans block text-[10px]">3.1 ย้ายไปโฟลเดอร์ที่ต้องการเก็บงาน:</span>
-                                <code class="text-indigo-400 bg-indigo-950/50 px-1 py-0.5 rounded block mt-1">cd ~/Desktop/Projects</code>
+                        <p class="text-[11px] text-slate-400 mb-3">วิธีดึงซอร์สโค้ดจาก GitHub ลงมาทำงานต่อเมื่อเปลี่ยนเครื่องคอมพิวเตอร์ หรือเริ่มทำงานในสภาพแวดล้อมใหม่</p>
+                        
+                        <div class="space-y-3 text-[11px] font-sans">
+                            <!-- 3.1 -->
+                            <div>
+                                <span class="text-indigo-400 font-semibold block text-[11px]">3.1 ย้ายไปยังโฟลเดอร์หลักสำหรับจัดเก็บโปรเจกต์</span>
+                                <code class="text-indigo-400 font-mono bg-indigo-950/50 px-1.5 py-0.5 rounded block mt-1">cd /เส้นทาง/ไปยัง/โฟลเดอร์เก็บงาน/Projects</code>
+                                <span class="text-slate-400 text-[10px] block mt-0.5">เตรียมไดเรกทอรีสำหรับดาวน์โหลดโปรเจกต์ลงมา</span>
                             </div>
-                            <div><span class="text-slate-500 font-sans block text-[10px]">3.2 โคลนโปรเจกต์ผ่าน HTTPS หรือ GitHub CLI:</span>
-                                <code class="text-indigo-400 bg-indigo-950/50 px-1 py-0.5 rounded block mt-1">git clone https://github.com/Dechatorn200x/Ebook---Dechatorn.git</code>
-                                <span class="text-slate-500 font-sans block text-[9px] mt-0.5">หรือใช้ GH CLI:</span>
-                                <code class="text-indigo-400 bg-indigo-950/50 px-1 py-0.5 rounded block mt-0.5">gh repo clone Dechatorn200x/Ebook---Dechatorn</code>
+
+                            <!-- 3.2 -->
+                            <div>
+                                <span class="text-indigo-400 font-semibold block text-[11px]">3.2 ดาวน์โหลด (Clone) โปรเจกต์ลงมายังเครื่อง</span>
+                                <span class="text-slate-300 block text-[10px] mt-0.5">เลือกใช้งานได้ตามความสะดวกของระบบ:</span>
+                                
+                                <div class="bg-slate-950/80 p-2 rounded border border-slate-800 mt-1 space-y-1.5 font-mono">
+                                    <div>
+                                        <span class="text-sky-300 text-[10px] font-sans block">• ผ่าน Git HTTPS / SSH:</span>
+                                        <code class="text-indigo-400 bg-indigo-950/50 px-1.5 py-0.5 rounded block mt-0.5">git clone https://github.com/username/repository-name.git</code>
+                                    </div>
+                                    <div class="border-t border-slate-800/80 pt-1">
+                                        <span class="text-purple-300 text-[10px] font-sans block">• ผ่าน GitHub CLI (ไม่ต้องระบุ URL เต็ม):</span>
+                                        <code class="text-indigo-400 bg-indigo-950/50 px-1.5 py-0.5 rounded block mt-0.5">gh repo clone username/repository-name</code>
+                                    </div>
+                                </div>
                             </div>
-                            <div><span class="text-slate-500 font-sans block text-[10px]">3.3 เข้าไปในโฟลเดอร์เพื่อเริ่มทำงานต่อ:</span>
-                                <code class="text-indigo-400 bg-indigo-950/50 px-1 py-0.5 rounded block mt-1">cd Ebook---Dechatorn</code>
+
+                            <!-- 3.3 -->
+                            <div>
+                                <span class="text-indigo-400 font-semibold block text-[11px]">3.3 เข้าสู่โฟลเดอร์โปรเจกต์และตรวจสอบกิ่งการทำงาน</span>
+                                <div class="font-mono mt-1 space-y-1">
+                                    <code class="text-indigo-400 bg-indigo-950/50 px-1.5 py-0.5 rounded block">cd repository-name</code>
+                                    <span class="text-slate-400 text-[10px] font-sans block">สลับไปยังโฟลเดอร์โปรเจกต์ที่ดาวน์โหลดลงมา</span>
+
+                                    <code class="text-indigo-400 bg-indigo-950/50 px-1.5 py-0.5 rounded block mt-1">git branch -a</code>
+                                    <span class="text-slate-400 text-[10px] font-sans block">ตรวจสอบรายชื่อ Branch ทั้งหมดใน Local และ Remote</span>
+                                </div>
+                            </div>
+
+                            <!-- 3.4 -->
+                            <div>
+                                <span class="text-indigo-400 font-semibold block text-[11px]">3.4 สลับไปยัง Branch ที่ต้องการพัฒนาต่อ</span>
+                                <code class="text-indigo-400 font-mono bg-indigo-950/50 px-1.5 py-0.5 rounded block mt-1">git checkout branch-name</code>
+                                <span class="text-slate-400 text-[10px] block mt-0.5">ดึงข้อมูลกิ่งที่ต้องการทำงานจาก Remote มาสร้างเป็น Local Branch ทันที</span>
                             </div>
                         </div>
                     </div>
@@ -277,7 +375,6 @@
         </div>
 
         <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-8">
-            
             <!-- Chapter 5 -->
             <section class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-6 shadow-inner flex flex-col justify-between">
                 <div>
